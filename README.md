@@ -3,6 +3,7 @@
 ## Co-op Student List
 Add your name here in your first pull request!
 - andrew jung
+- james hageman
 
 
 ## React App Tutorial Links
