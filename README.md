@@ -5,7 +5,6 @@ Add your name here in your first pull request!
 - andrew jung
 - james hageman
 
-
 ## React App Tutorial Links
 
 Here are some useful resources for getting up and running with frontend React development.
