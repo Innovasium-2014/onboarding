@@ -4,6 +4,7 @@
 Add your name here in your first pull request!
 - andrew jung
 - james hageman
+- andrew lazenka
 - william lo
 
 ## React App Tutorial Links
