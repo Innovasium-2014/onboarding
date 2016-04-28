@@ -16,4 +16,5 @@ npm install
 npm start
 ``` and open [localhost:3000](localhost:3000) to run the app. Try your best to type out the code yourself instead of just copy-pasting it.
 3. [Essential ES6](https://www.youtube.com/watch?v=CozSF5abcTA): this video will introduce you to some new Javascript language features we are using in our apps.
-4. [Getting Started With Redux](https://egghead.io/series/getting-started-with-redux): this course introduces you to Redux, a library we use to handle state management in our frontend single-page apps.
+4. [Flux Architecture](https://facebook.github.io/flux/): A video introduction to Flux, a design principle we use in our apps.
+5. [Getting Started With Redux](https://egghead.io/series/getting-started-with-redux): and introduciton to Redux, a library we use to handle state management in our frontend single-page apps (Using the Flux architecture).
