@@ -19,7 +19,7 @@ Here are some useful resources for getting up and running with frontend React de
  - [Essential ES6](https://www.youtube.com/watch?v=CozSF5abcTA): this video will introduce you to some new Javascript language features we are using in our apps. 
  - [ES6 for Humans](https://github.com/metagrover/ES6-for-humans)
 3. React:
- - [React Official Tutorial](http://facebook.github.io/react/docs/tutorial.html): this takes you through building a comment system in plain old React, without a build system. Download the zip file, cd into the folder and run ```
+ - [React Official Tutorial](http://facebook.github.io/react/docs/tutorial.html)
 npm install
 npm start
 ``` and open [localhost:3000](localhost:3000) to run the app. 
