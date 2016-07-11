@@ -26,7 +26,9 @@ npm start
 4. JSX:
  - [JSX in Depth](https://facebook.github.io/react/docs/jsx-in-depth.html)
 5. Redux:
+ - [Motivation](http://redux.js.org/docs/introduction/Motivation.html)
  - [Getting Started With Redux](https://egghead.io/series/getting-started-with-redux): and introduciton to Redux, a library we use to handle state management in our frontend single-page apps.
+ - [More Advanced](https://egghead.io/courses/building-react-applications-with-idiomatic-redux)
 6. Unit Testing:
  - [Testing Redux Applications](http://randycoulman.com/blog/2016/03/15/testing-redux-applications/): Innovasium's solution to Unit Testing components, reducers, and actions in a Redux React Application.
  - [Enyzme](http://airbnb.io/enzyme/index.html)
