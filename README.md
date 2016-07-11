@@ -20,9 +20,6 @@ Here are some useful resources for getting up and running with frontend React de
  - [ES6 for Humans](https://github.com/metagrover/ES6-for-humans)
 3. React:
  - [React Official Tutorial](http://facebook.github.io/react/docs/tutorial.html)
-npm install
-npm start
-``` and open [localhost:3000](localhost:3000) to run the app. 
 4. JSX:
  - [JSX in Depth](https://facebook.github.io/react/docs/jsx-in-depth.html)
 5. Redux:
