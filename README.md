@@ -18,8 +18,11 @@ Here are some useful resources for getting up and running with frontend React de
 2. ES6:
  - [Essential ES6](https://www.youtube.com/watch?v=CozSF5abcTA): this video will introduce you to some new Javascript language features we are using in our apps. 
  - [ES6 for Humans](https://github.com/metagrover/ES6-for-humans)
+ - [ES6 Features](http://es6-features.org/)
 3. React:
  - [React Official Tutorial](http://facebook.github.io/react/docs/tutorial.html)
+ - [Build with ReactJS](http://buildwithreact.com/#articles)
+ - [React.js Fundamentals](http://courses.reactjsprogram.com/courses/reactjsfundamentals)
 4. JSX:
  - [JSX in Depth](https://facebook.github.io/react/docs/jsx-in-depth.html)
 5. Redux:
