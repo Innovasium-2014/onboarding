@@ -38,17 +38,16 @@ Here are some useful resources for getting started with Rails backend developmen
 1. Ruby:
  - [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide)
 2. Rails:
- - [Mackenzie Child - Video Series](https://www.youtube.com/user/mackenziechild): Mackenzie Child created some great tutorial series' on his YouTube channel which proved to be a great introduction to the Ruby Language and create apps in Rails.  
+ - [Mackenzie Child - Video Series](https://www.youtube.com/user/mackenziechild): Mackenzie Child created some great tutorial series' on his YouTube channel which proved to be a great introduction to the Ruby Language and create apps in Rails.
  - [Rails Style Guide](https://github.com/bbatsov/rails-style-guide)
  - [Rails Documentation](http://guides.rubyonrails.org/index.html)
- - [Naming Conventions](https://gist.github.com/iangreenleaf/b206d09c587e8fc6399e): be familiar with the Rails conventions going into your development. The console will yell at you if it doesn't like your syntax.  
+ - [Naming Conventions](https://gist.github.com/iangreenleaf/b206d09c587e8fc6399e): be familiar with the Rails conventions going into your development. The console will yell at you if it doesn't like your syntax.
 3. API Documentation:
- - [Rails API](http://api.rubyonrails.org/): a solid reference point for example of Rails code and functionality.  
+ - [Rails API](http://api.rubyonrails.org/): a solid reference point for example of Rails code and functionality.
 4. RSpec Request Testing:
- - [RSpec Website](http://rspec.info/) 
+ - [RSpec Website](http://rspec.info/)
  - [RSpec Documentation](https://relishapp.com/rspec)
  - [FactoryGirl](https://github.com/thoughtbot/factory_girl)
-
 5. PostgreSQL - Database:
  - [Postgres](https://www.postgresql.org/)
 
