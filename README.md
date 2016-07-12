@@ -2,10 +2,7 @@
 
 ## Co-op Student List
 Add your name here in your first pull request!
-- 
-- 
-- 
-- 
+
 
 ## React App Tutorial Links
 
