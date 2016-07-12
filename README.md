@@ -31,9 +31,9 @@ Here are some useful resources for getting up and running with frontend React de
  - [Enyzme](http://airbnb.io/enzyme/index.html)
  - [Redux Testing](http://redux.js.org/docs/recipes/WritingTests.html)
 
- # Rails API
+# Rails API
 
- Here are some useful resources for getting started with Rails backend development.
+Here are some useful resources for getting started with Rails backend development.
 
 1. Ruby:
   - [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide)
