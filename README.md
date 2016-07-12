@@ -50,6 +50,9 @@ Here are some useful resources for getting started with Rails backend developmen
  - [FactoryGirl](https://github.com/thoughtbot/factory_girl)
 5. PostgreSQL Database:
  - [Postgres](https://www.postgresql.org/)
+6. User Authentication:
+ - [Devise](https://github.com/plataformatec/devise)
+ - [JSON Web Tokens](https://jwt.io/)
 
  # Extras
 
