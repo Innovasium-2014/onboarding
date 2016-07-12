@@ -48,9 +48,8 @@ Here are some useful resources for getting started with Rails backend developmen
  - [RSpec Website](http://rspec.info/)
  - [RSpec Documentation](https://relishapp.com/rspec)
  - [FactoryGirl](https://github.com/thoughtbot/factory_girl)
-5. PostgreSQL - Database:
+5. PostgreSQL Database:
  - [Postgres](https://www.postgresql.org/)
-
 
  # Extras
 
