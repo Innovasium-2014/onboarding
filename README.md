@@ -2,10 +2,10 @@
 
 ## Co-op Student List
 Add your name here in your first pull request!
-- andrew jung
-- julian pettit
-- andrew lazenka
-- william lo
+- 
+- 
+- 
+- 
 
 ## React App Tutorial Links
 
@@ -33,7 +33,34 @@ Here are some useful resources for getting up and running with frontend React de
  - [Testing Redux Applications](http://randycoulman.com/blog/2016/03/15/testing-redux-applications/): Innovasium's solution to Unit Testing components, reducers, and actions in a Redux React Application.
  - [Enyzme](http://airbnb.io/enzyme/index.html)
  - [Redux Testing](http://redux.js.org/docs/recipes/WritingTests.html)
-7. Extras:
+
+ # Rails API
+
+ Here are some useful resources for getting started with Rails backend development.
+
+ 1. Ruby:
+  - [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide)
+ 2. Rails:
+  - [Mackenzie Child - Video Series](https://www.youtube.com/user/mackenziechild): Mackenzie Child created some great tutorial series' on his YouTube channel which proved to be a great introduction to the Ruby Language and create apps in Rails.
+ 	- [Rails Style Guide](https://github.com/bbatsov/rails-style-guide)
+  - [Rails Documentation](http://guides.rubyonrails.org/index.html)
+ 	- [Naming Conventions](https://gist.github.com/iangreenleaf/b206d09c587e8fc6399e): be familiar with the Rails conventions going into your development. The console will yell at you if it doesn't like your syntax.
+ 3. API Documentation:
+ 	- [Rails API](http://api.rubyonrails.org/): a solid reference point for example of Rails code and functionality.
+ 4. RSpec Request Testing:
+ 	- [RSpec Website](http://rspec.info/) 
+ 	- [RSpec Documentation](https://relishapp.com/rspec)
+ 	- [FactoryGirl](https://github.com/thoughtbot/factory_girl)
+
+ 5. PostgreSQL - Database:
+  - [Postgres](https://www.postgresql.org/)
+
+
+ # Extras
+
+ A couple articles that we found useful when starting our development.
+
  - [Understanding the Github Flow](https://guides.github.com/introduction/flow/index.html)
  - [Closing Issues via Pull Requests](https://github.com/blog/1506-closing-issues-via-pull-requests)
  - [How to be a Programmer](https://github.com/braydie/HowToBeAProgrammer) (General Advice)
+ - [Markdown Cheat Sheet - for Documentiation](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
