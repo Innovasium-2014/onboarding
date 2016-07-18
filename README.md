@@ -32,7 +32,7 @@ Here are some useful resources for getting up and running with frontend React de
  - [Enyzme](http://airbnb.io/enzyme/index.html)
  - [Redux Testing](http://redux.js.org/docs/recipes/WritingTests.html)
 
-# Back-End Tutorials
+## Back-End Tutorials
 
 Here are some useful resources for getting started with Rails backend development.
 
