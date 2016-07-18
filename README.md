@@ -12,6 +12,7 @@ Here are some useful resources for getting up and running with frontend React de
  - [Javascript Essential Training](https://www.lynda.com/JavaScript-tutorials/JavaScript-Essential-Training/81266-2.html?srchtrk=index:1%0Alinktypeid:2%0Aq:javascript%2Bessential%2Btraining%0Apage:1%0As:relevance%0Asa:true%0Aproducttypeid:2)  (5 hours 31mins) 
  - [Javascript Style Guide](https://github.com/airbnb/javascript) (~ 30 minute read)
  - [Learn Javascript E-Book](https://gitbookio.gitbooks.io/javascript/content/)
+ - [IIFE (immediately-invoked function expression)] (https://toddmotto.com/what-function-window-document-undefined-iife-really-means/)
 2. ES6:
  - [Essential ES6](https://www.youtube.com/watch?v=CozSF5abcTA): this video will introduce you to some new Javascript language features we are using in our apps. 
  - [ES6 for Humans](https://github.com/metagrover/ES6-for-humans)
