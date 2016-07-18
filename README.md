@@ -63,3 +63,4 @@ Here are some useful resources for getting started with Rails backend developmen
  - [Closing Issues via Pull Requests](https://github.com/blog/1506-closing-issues-via-pull-requests)
  - [How to be a Programmer](https://github.com/braydie/HowToBeAProgrammer) (General Advice)
  - [Markdown Cheat Sheet - for Documentiation](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+ - [10 Rules of the Pragmatic Programmer](http://blog.sukria.net/2012/01/06/the-10-rules-of-the-pragmatic-programmer/)
