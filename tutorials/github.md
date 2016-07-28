@@ -16,4 +16,25 @@ Luckily for us 21st century developers, simple yet beautiful UI is just so easy 
 
 Confused yet? Let's break this down into small steps, that'll make things a little more concrete.
 
+### Github Terms 
+
 1. Branches
+
+> All projects that exist within a Github repository are broken up into branches. These branches contain a version of your project that has been isolated by itself, so that you can work on the same code that everyone else is without damaging each others work. Ryan can take a branch off X project and work database architecture, while Matt can take a branch off the same project and work on some UI enhancements. They will be working on the same projects, while not butting heads with each other trying to edit the same code.
+
+2. Commits
+
+> A commit is just a fancy term for saving the changes you've made to Github. Since you will be isolated to working off of a branch, you can commit code that may break the build of your app, not a problem at all. Just be aware that when you are finished working on your branch that your code should be tested and stable.
+
+3. Pull Requests and Merging
+
+> These two terms go hand in hand, therefore I found it appropriate to include them together. Creating a pull request means that you want to bring the functionality you created on your branch and join it back into the development branch. Now you see why it needs to be stable? Each pull request must be reviewed by either Matt or Ryan, who will (more than likely) present you with some constructive criticism on changes they would like to see before they give you the seal of approval. Once they think your branch is adequate, they will merge the branch back into development. In summary; you create a pull request, it will be merged into development.
+
+
+
+
+
+
+
+
+
