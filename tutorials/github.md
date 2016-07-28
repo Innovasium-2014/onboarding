@@ -34,7 +34,9 @@ Merge Conflicts
 
 > This term may come up if you have been working along side another developer on the same file but in different branches. You may notice a little button in the Github desktop that says `update from development`. This button will update your branch with all the changes that have been added to the development branch. If you have altered the same file as someone else, Github will show you four pretty, yellow dots on the file stating that there are two different versions of the file and you need to choose which you want to keep or discard. Please ask Ryan or Matt for details the first few times this issue arises, they can walk you through it in more detail.
 
-That is really all there is to it. Now, go back up and read those bullet points again to make sure you can follow the workflow through the process Github has outlined.
+That is really all there is to it. Now, go back up and read those bullet points again to make sure you can follow the workflow through the process Github has outlined. Check out the picture below for a brief overview of the Github Desktop UI.
+
+![picture](http://imgur.com/a/EHDd7)
 
 *Note: You can take as many branches off of development as you want, at any time. Tax free.*
 
