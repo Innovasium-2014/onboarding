@@ -36,7 +36,7 @@ Merge Conflicts
 
 That is really all there is to it. Now, go back up and read those bullet points again to make sure you can follow the workflow through the process Github has outlined. Check out the picture below for a brief overview of the Github Desktop UI.
 
-[Imgur](http://i.imgur.com/KaHGzj1.png)
+![Imgur](http://i.imgur.com/KaHGzj1.png)
 
 *Note: You can take as many branches off of development as you want, at any time. Tax free.*
 
