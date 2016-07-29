@@ -18,6 +18,10 @@ Confused yet? Let's break down the Github terminology, that'll make things a lit
 
 ### Github Terms 
 
+Repository
+
+> All work that gets saved by Github is stored into what we call a repository. Simply put, a repository is like a binder. It is a place to store your work, and interact with the existing changes you may have made to your code. Typically you will be working on the Innovasium-2014 private workspace, so you may see multiple repositories to choose from. Ask for guidance from Matt or Ryan regarding which project you will be working on. You will not be able to create or edit repositories, only access the information they contain.
+
 Branches
 
 > All projects that exist within a Github repository are broken up into branches. These branches contain a version of your project that has been isolated by itself, so that you can work on the same code that everyone else is without damaging each others work. For example, Ryan can take a branch off X project and work on database architecture, while Matt can take a branch off the same project and work on UI enhancements. They will be working on the same projects, while not butting heads with each other trying to edit the same code.
