@@ -1,10 +1,10 @@
 # Github - Saving Code Daily
 
-You'll soon come to learn that Github is becoming one of the most essential tools for developpers on a day-to-day basis. It is extremely powerful for versioning your projects, and tracking all the changes that you make to your code. It also allows for many different developpers to be working on the same files and projects at the same time without track of your work and causing fatal errors due to conflicts with each others code.
+You'll soon come to learn that Github is becoming one of the most essential tools for developers on a day-to-day basis. It is extremely powerful for versioning your projects, and tracking all the changes that you make to your code. It also allows for many different developers to be working on the same files and projects at the same time without losing track of your work and causing fatal errors due to conflicts with each others code.
 
 ### The Github Workflow
 
-Luckily for us 21st century developers, simple yet beautiful UI is just so easy to use that it makes our bigger more complicated tasks not so difficult. Let me give you a quick example of how Github does that for us while developping, and then I will break it down into parts.
+Luckily for us 21st century developers, simple yet beautiful UI has become somewhat of a standard and is easy to use. Github has created a desktop application for interacting directly with their website, rather than having to type commands into the terminal. This makes our job as developers much more simple, as we can simply submit the changes we have made on through the UI and send it over to Github. Let me give you a quick example of how Github will be utilised while developping:
 
 - Github gives us access to a development branch, on which we keep the stable, tested, production-ready version of our code base. In order to create the bulk of this branch, we can take a new branch off of development and name it to be the next slice of functionality we are looking to implement. 
 
@@ -14,7 +14,7 @@ Luckily for us 21st century developers, simple yet beautiful UI is just so easy 
 
 - Once the pull request has been merged, your code will exist in the development branch. Now you can restart the entire process all over again.
 
-Confused yet? Let's break this down into small steps, that'll make things a little more concrete.
+Confused yet? Let's break down the Github terminology, that'll make things a little more concrete.
 
 ### Github Terms 
 
