@@ -50,9 +50,9 @@ Here are some useful resources for getting started with backend development in R
  - [Devise](https://github.com/plataformatec/devise)
  - [JSON Web Tokens](https://jwt.io/)
 
- ## Extras
+## Extras
 
- Here are a couple articles that we found useful when starting our development.
+Here are a couple articles that we found useful when starting our development.
 
  - [Understanding the Github Flow](https://guides.github.com/introduction/flow/index.html)
  - [Closing Issues via Pull Requests](https://github.com/blog/1506-closing-issues-via-pull-requests)
@@ -60,12 +60,12 @@ Here are some useful resources for getting started with backend development in R
  - [Markdown Cheat Sheet - for Documentiation](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
  - [10 Rules of the Pragmatic Programmer](http://blog.sukria.net/2012/01/06/the-10-rules-of-the-pragmatic-programmer/)
 
- Here are a couple of great sites to brush up on Javascript and Ruby.
+Here are a couple of great sites to brush up on Javascript and Ruby.
 
  - [FreeCodeCamp - Javascript](https://www.freecodecamp.com/challenges/learn-how-free-code-camp-works)
  - [Codecademy - Both](https://www.codecademy.com/)
 
- ## Documentation Links
+## Documentation Links
 
- [Back to Main Page](../README.md)  
- [GitHub Introduction](github.md)
+[Back to Main Page](../README.md)  
+[GitHub Introduction](github.md)
