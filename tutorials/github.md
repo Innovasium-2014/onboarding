@@ -34,11 +34,7 @@ Be sure to check out the picture below for a brief overview of the Github Deskto
 
 *Note: You can take as many branches off of development as you want, at any time. Tax free.*
 
+## Documentation Links
 
-
-
-
-
-
-
-
+[Back to Main Page](../README.md)  
+[Useful Links and Tutorials](tutorials.md)  
