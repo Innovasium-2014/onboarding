@@ -2,7 +2,7 @@
 
 Here are some useful resources for getting up and running with frontend development in React.
 
-1. JavaScript: 
+1. JavaScript:
  - [Javascript Essential Training](https://www.lynda.com/JavaScript-tutorials/JavaScript-Essential-Training/81266-2.html?srchtrk=index:1%0Alinktypeid:2%0Aq:javascript%2Bessential%2Btraining%0Apage:1%0As:relevance%0Asa:true%0Aproducttypeid:2)  (5 hours 31mins) 
  - [Javascript Style Guide](https://github.com/airbnb/javascript) (~ 30 minute read)
  - [Learn Javascript E-Book](https://gitbookio.gitbooks.io/javascript/content/)
@@ -52,7 +52,7 @@ Here are some useful resources for getting started with Rails backend developmen
 
  # Extras
 
- A couple articles that we found useful when starting our development.
+ Here are a couple articles that we found useful when starting our development.
 
  - [Understanding the Github Flow](https://guides.github.com/introduction/flow/index.html)
  - [Closing Issues via Pull Requests](https://github.com/blog/1506-closing-issues-via-pull-requests)
@@ -60,3 +60,7 @@ Here are some useful resources for getting started with Rails backend developmen
  - [Markdown Cheat Sheet - for Documentiation](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
  - [10 Rules of the Pragmatic Programmer](http://blog.sukria.net/2012/01/06/the-10-rules-of-the-pragmatic-programmer/)
 
+ If you're looking to practice programming in Ruby or Javascript, look no further than these next links.
+
+ - [FreeCodeCamp - Javascript](https://www.freecodecamp.com/challenges/learn-how-free-code-camp-works)
+ - [Codecademy - Both](https://www.codecademy.com/)
