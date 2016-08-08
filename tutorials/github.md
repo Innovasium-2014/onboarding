@@ -30,6 +30,8 @@ Merge Conflicts
 
 Be sure to check out the picture below for a brief overview of the Github Desktop UI.
 
+Also be sure to look at this [webpage](https://guides.github.com/introduction/flow/), which does a great displaying the workflow of Github.
+
 ![Imgur](http://i.imgur.com/TokQDnt.png)
 
 *Note: You can take as many branches off of development as you want, at any time. Tax free.*
