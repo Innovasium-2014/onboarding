@@ -1,8 +1,8 @@
 # React App Tutorial Links
 
-Here are some useful resources for getting up and running with frontend React development.
+Here are some useful resources for getting up and running with frontend development in React.
 
-1. JavaScript: 
+1. JavaScript:
  - [Javascript Essential Training](https://www.lynda.com/JavaScript-tutorials/JavaScript-Essential-Training/81266-2.html?srchtrk=index:1%0Alinktypeid:2%0Aq:javascript%2Bessential%2Btraining%0Apage:1%0As:relevance%0Asa:true%0Aproducttypeid:2)  (5 hours 31mins) 
  - [Javascript Style Guide](https://github.com/airbnb/javascript) (~ 30 minute read)
  - [Learn Javascript E-Book](https://gitbookio.gitbooks.io/javascript/content/)
@@ -29,17 +29,17 @@ Here are some useful resources for getting up and running with frontend React de
 
 ## Back-End Tutorials
 
-Here are some useful resources for getting started with Rails backend development.
+Here are some useful resources for getting started with backend development in Ruby on Rails.
 
 1. Ruby:
  - [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide)
 2. Rails:
- - [Mackenzie Child - Video Series](https://www.youtube.com/user/mackenziechild): Mackenzie Child created some great tutorial series' on his YouTube channel which proved to be a great introduction to the Ruby Language and create apps in Rails.
+ - [Mackenzie Child - Video Series](https://www.youtube.com/user/mackenziechild): Mackenzie Child created some great tutorial series' on his YouTube channel which proved to be a great introduction to the Ruby Language and creating apps in Rails.
  - [Rails Style Guide](https://github.com/bbatsov/rails-style-guide)
  - [Rails Documentation](http://guides.rubyonrails.org/index.html)
- - [Naming Conventions](https://gist.github.com/iangreenleaf/b206d09c587e8fc6399e): be familiar with the Rails conventions going into your development. The console will yell at you if it doesn't like your syntax.
+ - [Naming Conventions](https://gist.github.com/iangreenleaf/b206d09c587e8fc6399e): Be familiar with the Rails conventions going into your development. The console will yell at you if it doesn't like your syntax.
 3. API Documentation:
- - [Rails API](http://api.rubyonrails.org/): a solid reference point for example of Rails code and functionality.
+ - [Rails API](http://api.rubyonrails.org/): A solid reference point for example of Rails code and functionality.
 4. RSpec Request Testing:
  - [RSpec Website](http://rspec.info/)
  - [RSpec Documentation](https://relishapp.com/rspec)
@@ -50,9 +50,9 @@ Here are some useful resources for getting started with Rails backend developmen
  - [Devise](https://github.com/plataformatec/devise)
  - [JSON Web Tokens](https://jwt.io/)
 
- # Extras
+## Extras
 
- A couple articles that we found useful when starting our development.
+Here are a couple articles that we found useful when starting our development.
 
  - [Understanding the Github Flow](https://guides.github.com/introduction/flow/index.html)
  - [Closing Issues via Pull Requests](https://github.com/blog/1506-closing-issues-via-pull-requests)
@@ -60,3 +60,12 @@ Here are some useful resources for getting started with Rails backend developmen
  - [Markdown Cheat Sheet - for Documentiation](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
  - [10 Rules of the Pragmatic Programmer](http://blog.sukria.net/2012/01/06/the-10-rules-of-the-pragmatic-programmer/)
 
+Here are a couple of great sites to brush up on Javascript and Ruby.
+
+ - [FreeCodeCamp - Javascript](https://www.freecodecamp.com/challenges/learn-how-free-code-camp-works)
+ - [Codecademy - Both](https://www.codecademy.com/)
+
+## Documentation Links
+
+[Back to Main Page](../README.md)  
+[GitHub Introduction](github.md)
