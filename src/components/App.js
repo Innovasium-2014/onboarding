@@ -4,7 +4,6 @@ import Name from './Name';
 import NameForm from './NameForm';
 
 const App = React.createClass({
-
   getInitialState() {
     // TODO extract this state into the students reducer.
     return {
@@ -28,7 +27,7 @@ const App = React.createClass({
         {
           id: '4',
           name: 'Jeremy'
-        }, 
+        },
         {
           id: '5',
           name: 'Jordan'
@@ -61,9 +60,10 @@ const App = React.createClass({
     return this.state.appState.map((person, i) => {
       return (
         <div key={person.id}>
-          <Name 
+          <Name
             studentName={person.name} id={person.id}
-            onRemoveName={() => this.removeName(person.id)}/>
+            onRemoveName={() => this.removeName(person.id)}
+          />
         </div>
       );
     });
@@ -74,7 +74,7 @@ const App = React.createClass({
       <div className='container parentContainer'>
         <div>
           <h1 className='header'>Welcome to React</h1>
-          <NameForm onSubmit={this.addStudent}/>
+          <NameForm onSubmit={this.addStudent} />
         </div>
         {this.renderNames()}
       </div>

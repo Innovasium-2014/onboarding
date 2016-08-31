@@ -4,7 +4,7 @@
   "description": "A simple boilerplate featuring React, Redux, and Sass",
   "main": "bundle.js",
   "scripts": {
-    "test": "nyc mocha testSetup.js src/**/*.test.js",
+    "test": "eslint . && nyc mocha testSetup.js src/**/*.test.js",
     "webpack": "webpack --watch -d --progress --colors",
     "start": "webpack-dev-server --hot --inline --content-base public/"
   },

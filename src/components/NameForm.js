@@ -1,7 +1,7 @@
 import React from 'react';
 import '../stylesheets/NameForm.css';
-const NameForm = React.createClass({
 
+const NameForm = React.createClass({
   propTypes: {
     onSubmit: React.PropTypes.func.isRequired
   },
@@ -10,15 +10,15 @@ const NameForm = React.createClass({
     return {
       inputValue: '',
       inputError: false
-    }
+    };
   },
 
   handleSubmit(e) {
     e.preventDefault();
     if (!this.state.inputValue) {
-       this.setState({
+      this.setState({
         inputError: true
-       });
+      });
     } else {
       this.props.onSubmit(this.state.inputValue);
       this.setState({
@@ -37,15 +37,17 @@ const NameForm = React.createClass({
 
   render() {
     return (
-      <form 
+      <form
         className='row inputForm'
-        onSubmit={this.handleSubmit}>
+        onSubmit={this.handleSubmit}
+      >
         <h4>Add a new student </h4>
         <div className='col-md-4 col-md-offset-4'>
           <input
             className='form-control'
             value={this.state.inputValue}
-            onChange={this.onInputChange}/>
+            onChange={this.onInputChange}
+          />
           {this.state.inputError ?
             <font className='errorText'>Name must not be empty</font> : null
           }
