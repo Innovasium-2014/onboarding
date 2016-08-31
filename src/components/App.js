@@ -1,63 +1,39 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import '../stylesheets/App.css';
 import Name from './Name';
 import NameForm from './NameForm';
+import { add, load, remove } from '../actions/StudentActions';
+
+const { arrayOf, shape, number, string, func } = React.PropTypes;
 
 const App = React.createClass({
-  getInitialState() {
-    // TODO extract this state into the students reducer.
-    return {
-      appState: [
-        {
-          id: '0',
-          name: 'William'
-        },
-        {
-          id: '1',
-          name: 'Andrew'
-        },
-        {
-          id: '2',
-          name: 'Julian'
-        },
-        {
-          id: '3',
-          name: 'Alex'
-        },
-        {
-          id: '4',
-          name: 'Jeremy'
-        },
-        {
-          id: '5',
-          name: 'Jordan'
-        }
-      ]
-    };
+  propTypes: {
+    addStudent: func.isRequired,
+    loadStudents: func.isRequired,
+    removeStudent: func.isRequired,
+    students: arrayOf(
+      shape({
+        id: number.isRequired,
+        name: string.isRequired
+      })
+    ).isRequired
+  },
+
+  componentDidMount() {
+    this.props.loadStudents();
   },
 
   removeName(id) {
-    const deletedNameList = this.state.appState.filter((person) => {
-      return person.id !== id;
-    });
-    this.setState({
-      appState: deletedNameList
-    });
+    this.props.removeStudent(id);
   },
 
   addStudent(studentName) {
-    const nameList = this.state.appState;
-    nameList.push({
-      id: nameList.length.toString(),
-      name: studentName
-    });
-    this.setState({
-      appState: nameList
-    });
+    this.props.addStudent(studentName);
   },
 
   renderNames() {
-    return this.state.appState.map((person, i) => {
+    return this.props.students.map((person, i) => {
       return (
         <div key={person.id}>
           <Name
@@ -82,5 +58,16 @@ const App = React.createClass({
   }
 });
 
+function mapStateToProps(state) {
+  return {
+    students: state.students
+  };
+}
 
-export default App;
+const actionCreators = {
+  addStudent: add,
+  loadStudents: load,
+  removeStudent: remove
+};
+
+export default connect(mapStateToProps, actionCreators)(App);

@@ -1,1 +1,3 @@
 export const STUDENTS_LOAD = 'STUDENTS_LOAD';
+export const STUDENTS_ADD = 'STUDENTS_ADD';
+export const STUDENTS_REMOVE = 'STUDENTS_REMOVE';
