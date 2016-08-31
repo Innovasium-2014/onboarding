@@ -27,6 +27,7 @@
     "react/sort-comp": 0,
     "no-unused-vars": [2, {"args": "none"}],
     "no-alert": 0,
+    "no-undef": 2,
     "arrow-body-style": 0,
     "import/prefer-default-export": 0,
     "import/no-extraneous-dependencies": 0,
