@@ -6,6 +6,7 @@ import NameForm from './NameForm';
 const App = React.createClass({
 
   getInitialState() {
+    // TODO extract this state into the students reducer.
     return {
       appState: [
         {
@@ -36,18 +37,7 @@ const App = React.createClass({
     };
   },
 
-  _renderNames() {
-    return this.state.appState.map((person, i) => {
-      return (
-        <div key={person.id}>
-          <Name studentName={person.name} id={person.id}
-                _removeName={() => this._removeName(person.id)}/>
-        </div>
-      );
-    });
-  },
-
-  _removeName(id) {
+  removeName(id) {
     const deletedNameList = this.state.appState.filter((person) => {
       return person.id !== id;
     });
@@ -56,7 +46,7 @@ const App = React.createClass({
     });
   },
 
-  _addStudent(studentName) {
+  addStudent(studentName) {
     const nameList = this.state.appState;
     nameList.push({
       id: nameList.length.toString(),
@@ -67,14 +57,26 @@ const App = React.createClass({
     });
   },
 
+  renderNames() {
+    return this.state.appState.map((person, i) => {
+      return (
+        <div key={person.id}>
+          <Name 
+            studentName={person.name} id={person.id}
+            onRemoveName={() => this.removeName(person.id)}/>
+        </div>
+      );
+    });
+  },
+
   render() {
     return (
       <div className='container parentContainer'>
         <div>
           <h1 className='header'>Welcome to React</h1>
-          <NameForm onSubmit={this._addStudent}/>
+          <NameForm onSubmit={this.addStudent}/>
         </div>
-        {this._renderNames()}
+        {this.renderNames()}
       </div>
     );
   }

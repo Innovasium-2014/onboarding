@@ -4,19 +4,20 @@ const Name = React.createClass({
 
   propTypes: {
     studentName: React.PropTypes.string.isRequired,
-    _removeName: React.PropTypes.func.isRequired
+    onRemoveName: React.PropTypes.func.isRequired
   },
 
-  _deleteName() {
-    this.props._removeName();
+  deleteName() {
+    this.props.onRemoveName();
   },
 
   render() {
     return (
       <div className='row'>
         <h3>{this.props.studentName}</h3>
-        <button className='btn btn-danger'
-                onClick={this._deleteName}> Delete </button>
+        <button
+          className='btn btn-danger'
+          onClick={this.deleteName}> Delete </button>
       </div>
     );
   }

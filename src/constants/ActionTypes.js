@@ -1,1 +1,1 @@
-export const TEST_ACTION = 'TEST_ACTION';
+export const STUDENTS_LOAD = 'STUDENTS_LOAD';
