@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
-import TestStore from './TestReducer';
+import students from './Students';
 
-export default combineReducers(
-  Object.assign({}, {
-  	TestStore
-  })
-);
+export default combineReducers({
+  students,
+});
