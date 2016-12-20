@@ -15,9 +15,8 @@ const Name = React.createClass({
       <div className='row'>
         <h3>{this.props.studentName}</h3>
         <button
-          className='btn btn-danger'
-          onClick={this.deleteName}
-        >
+        className='btn btn-danger'
+        onClick={this.deleteName}>
           Delete
         </button>
       </div>

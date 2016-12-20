@@ -61,9 +61,9 @@ const App = React.createClass({
       return (
         <div key={person.id}>
           <Name
-            studentName={person.name} id={person.id}
-            onRemoveName={() => this.removeName(person.id)}
-          />
+          id={person.id}
+          studentName={person.name}
+          onRemoveName={() => this.removeName(person.id)}/>
         </div>
       );
     });
@@ -73,8 +73,10 @@ const App = React.createClass({
     return (
       <div className='container parentContainer'>
         <div>
-          <h1 className='header'>Welcome to React</h1>
-          <NameForm onSubmit={this.addStudent} />
+          <h1>
+            Welcome to React
+          </h1>
+          <NameForm onSubmit={this.addStudent}/>
         </div>
         {this.renderNames()}
       </div>
