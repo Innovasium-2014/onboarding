@@ -11,7 +11,6 @@
 ## Co-op Student Alumni
 
 - Alexander Glover
-
 - Jordan Edwards
 
 - Jeremy Kim
