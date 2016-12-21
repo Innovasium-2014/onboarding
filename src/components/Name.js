@@ -2,6 +2,7 @@ import React from 'react';
 
 const Name = React.createClass({
   propTypes: {
+    id: React.PropTypes.string.isRequired,
     studentName: React.PropTypes.string.isRequired,
     onRemoveName: React.PropTypes.func.isRequired
   },
