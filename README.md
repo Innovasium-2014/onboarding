@@ -1,13 +1,31 @@
 # Onboarding
 
 ## Co-op Student List
-Add your name here in your first pull request!
+#### Add your name here in your first pull request!
+- 
+
+- 
+
+- 
+
+## Co-op Student Alumni
 
 - Alexander Glover
+- Jordan Edwards
 
-- 
+- Jeremy Kim
 
-- 
+- Andrew Lazenka
+
+- Andrew Jung
+
+- Julian Pettit
+
+- William Lo
+
+- Arham Ahmed
+
+- Keren Chandran
 
 ## Documentation Links
 
