@@ -12,7 +12,22 @@ const NameForm = React.createClass({
 
   render() {
     return (
-      <div></div>
+      <form
+      className='row inputForm'
+      onSubmit={this.handleSubmit}>
+        <h4>
+          Add a new student
+        </h4>
+        <div className='col-md-4 col-md-offset-4'>
+          <input
+          className='form-control'
+          value={this.state.inputValue}
+          onChange={this.onInputChange}/>
+          {this.state.inputError ?
+            <font className='errorText'>Name must not be empty</font> : null
+          }
+        </div>
+      </form>
     );
   }
 });
