@@ -7,9 +7,7 @@ https://docs.google.com/document/d/18Xe05G-q2cP4SUi5CQx6kV4j49M_vS2rWHy8cxvOv_o/
 #### Add your name here in your first pull request!
 - Tom Nies
 
--
-
--
+- Jason Xu
 
 ## Co-op Student Alumni
 
