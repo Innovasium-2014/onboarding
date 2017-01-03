@@ -1,38 +1,9 @@
 import React from 'react';
 import '../stylesheets/App.css';
-import Name from './Name';
-import NameForm from './NameForm';
 
 const App = React.createClass({
   getInitialState() {
-    // TODO extract this state into the students reducer.
     return {
-      appState: [
-        {
-          id: '0',
-          name: 'William'
-        },
-        {
-          id: '1',
-          name: 'Andrew'
-        },
-        {
-          id: '2',
-          name: 'Julian'
-        },
-        {
-          id: '3',
-          name: 'Alex'
-        },
-        {
-          id: '4',
-          name: 'Jeremy'
-        },
-        {
-          id: '5',
-          name: 'Jordan'
-        }
-      ]
     };
   },
 

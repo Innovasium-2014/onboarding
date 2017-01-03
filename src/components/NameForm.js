@@ -3,37 +3,12 @@ import '../stylesheets/NameForm.css';
 
 const NameForm = React.createClass({
   propTypes: {
-    onSubmit: React.PropTypes.func.isRequired
   },
 
   getInitialState() {
     return {
-      inputValue: '',
-      inputError: false
     };
   },
-
-  handleSubmit(e) {
-    e.preventDefault();
-    if (!this.state.inputValue) {
-      this.setState({
-        inputError: true
-      });
-    } else {
-      this.props.onSubmit(this.state.inputValue);
-      this.setState({
-        inputValue: ''
-      });
-    }
-  },
-
-  onInputChange(e) {
-    this.setState({
-      inputValue: e.target.value,
-      inputError: false
-    });
-  },
-
 
   render() {
     return (
