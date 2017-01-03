@@ -14,7 +14,8 @@ const NameForm = React.createClass({
     return (
       <form
       className='row inputForm'
-      onSubmit={this.handleSubmit}>
+      onSubmit={this.handleSubmit}
+      >
         <h4>
           Add a new student
         </h4>
@@ -22,7 +23,8 @@ const NameForm = React.createClass({
           <input
           className='form-control'
           value={this.state.inputValue}
-          onChange={this.onInputChange}/>
+          onChange={this.onInputChange}
+          />
           {this.state.inputError ?
             <font className='errorText'>Name must not be empty</font> : null
           }
