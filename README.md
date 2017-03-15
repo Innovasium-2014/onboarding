@@ -1,12 +1,7 @@
 # Onboarding
 
-## Get started with Github
-
-https://github.com/Innovasium-2014/Onboarding/blob/development/tutorials/github.md
-
-## Get started with React & Ruby
-
-https://github.com/Innovasium-2014/Onboarding/blob/development/tutorials/tutorials.md
+#### [Get started with Github](tutorials/github.md)
+#### [Get started with React & Ruby](tutorials/tutorials.md)
 
 ## Co-op Student List
 #### Add your name here in your first pull request!
