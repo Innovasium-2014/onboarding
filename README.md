@@ -32,8 +32,3 @@ https://github.com/Innovasium-2014/Onboarding/blob/development/tutorials/tutoria
 - Arham Ahmed
 
 - Keren Chandran
-
-## Documentation Links
-
-[Useful Links and Tutorials](tutorials/tutorials.md)  
-[GitHub Introduction](tutorials/github.md)
