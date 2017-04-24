@@ -7,6 +7,7 @@ Here are some useful resources for getting up and running with frontend developm
  - [Javascript Style Guide](https://github.com/airbnb/javascript) (~ 30 minute read)
  - [Learn Javascript E-Book](https://gitbookio.gitbooks.io/javascript/content/)
  - [IIFE (immediately-invoked function expression)] (https://toddmotto.com/what-function-window-document-undefined-iife-really-means/)
+ - [Immutable JS] (https://facebook.github.io/immutable-js/)
 2. ES6:
  - [Learn ES6](https://egghead.io/courses/learn-es6-ecmascript-2015?utm_source=drip&utm_medium=email&utm_campaign=learn-es6)
  - [Essential ES6](https://www.youtube.com/watch?v=CozSF5abcTA): this video will introduce you to some new Javascript language features we are using in our apps. 
