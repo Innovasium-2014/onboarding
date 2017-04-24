@@ -13,7 +13,7 @@ Here are some useful resources for getting up and running with frontend developm
  - [ES6 for Humans](https://github.com/metagrover/ES6-for-humans)
  - [ES6 Features](http://es6-features.org/)
 3. React:
- - [React Official Tutorial](http://facebook.github.io/react/docs/tutorial.html)
+ - [React Official Tutorial](https://facebook.github.io/react/tutorial/tutorial.html)
  - [Build with ReactJS](http://buildwithreact.com/#articles)
  - [React.js Fundamentals](http://courses.reactjsprogram.com/courses/reactjsfundamentals)
 4. JSX:
