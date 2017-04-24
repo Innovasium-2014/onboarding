@@ -5,13 +5,18 @@
 
 ## Co-op Student List
 #### Add your name here in your first pull request!
+- 
+
+- 
+
+## Co-op Student Alumni
+
 - Tom Nies
 
 - Jason Xu
 
-## Co-op Student Alumni
-
 - Alexander Glover
+
 - Jordan Edwards
 
 - Jeremy Kim
