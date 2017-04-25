@@ -20,6 +20,6 @@ Run npm install in frontend folder.
 Run bundle install in backend folder.
 
 ## To Start App:
-Run with npm start in frontend folder for client.
+Run npm start in frontend folder for client.
 
-Run with rails server in backend folder for rails server.
+Run pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start then run rails server in backend folder for rails server.
