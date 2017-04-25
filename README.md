@@ -8,7 +8,7 @@
 
 - Andrew Lazenka x2 
 
-- 
+- Jacob Steves
 
 ## Co-op Student Alumni
 
