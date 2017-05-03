@@ -69,14 +69,17 @@ class App extends React.Component {
   postList() {
     const posts = (this.props.reddits && this.props.reddits.get('children')) || [];
     return posts.map((post, i) => {
-      const postUps = post.get('data');
-      const postUrl = post.get('data');
-      const postTitle = post.get('data');
-      const postAuthor = post.get('data');
+      const postUps = post.get('data').get('ups');
+      const postUrl = post.get('data').get('url');
+      const postTitle = post.get('data').get('title');
+      const postAuthor = post.get('data').get('author');
+      const authorLink = 'http://www.reddit.com/user/' + postAuthor;
       return (
         <div key={i}>
           <span>
-            <a href={postUrl}>{postUps} - {postTitle} - {postAuthor}</a>
+            {postUps} -
+            <a href={postUrl}>{postTitle}</a> -
+            <a href={authorLink}>{postAuthor}</a>
           </span>
         </div>
       );
