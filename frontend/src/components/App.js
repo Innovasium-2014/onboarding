@@ -16,7 +16,7 @@ class App extends React.Component {
 		this.state = {
 			inputValue: '',
 			inputError: '',
-			redditjson: {},
+			redditdata: {},
 			subreddit: 'UWaterloo'
 
 		};
@@ -67,8 +67,8 @@ class App extends React.Component {
 	}
 
 	getHandler() {
-		const url = 'http://www.reddit.com/r/' + this.state.subreddit + '.json';
-		this.setState({redditjson : this.props.getFeed(url) });
+		const url = 'http://www.reddit.com/r/' + this.state.subreddit + '/.embed?limit=5&t=all;';
+		this.setState({redditdata : this.props.getFeed(url) });
 		return false;
 	}
 

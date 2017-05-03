@@ -36,12 +36,9 @@ const RedditFeed = React.createClass({
   },
 
   _renderContent() {
-    const url = 'http://www.reddit.com/r/' + this.state.subreddit;
+    const url = 'http://www.reddit.com/r/' + this.state.subreddit + '/.embed?limit=5&t=all';
     return (
-      <div>
-        <a href={url}>{ this.state.subreddit }</a>
-        {this._postList()}
-      </div>
+      <div>Test<button>Hello</button></div>
     );
   },
 
