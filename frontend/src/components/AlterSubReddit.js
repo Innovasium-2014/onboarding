@@ -5,7 +5,6 @@ class AlterSubReddit extends React.Component {
   constructor() {
     super();
     this.state = {
-      inputValue: ''
     };
   }
 

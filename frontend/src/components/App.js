@@ -27,7 +27,8 @@ class App extends React.Component {
     students: instanceOf(Immutable.list),
     reddits: instanceOf(Immutable.list),
     addStudent: func.isRequired,
-    getFeed: func.isRequired
+    getFeed: func.isRequired,
+    inputValue: string
   }
 
   addHandler(e) {
@@ -40,7 +41,10 @@ class App extends React.Component {
       return false;
     }
     this.props.addStudent(inputValue);
-    this.setState({ inputValue: '', inputError: '' });
+    this.setState({
+      inputValue: '',
+      inputError: ''
+    });
     return false;
   }
 
@@ -59,18 +63,20 @@ class App extends React.Component {
 
   getHandler() {
     const url = 'http://www.reddit.com/r/' + this.state.subreddit + '.json';
-    this.setState({
-      feedData: this.props.getFeed(url)
-    });
+    this.props.getFeed(url);
   }
 
   postList() {
     const posts = (this.props.reddits && this.props.reddits.get('children')) || [];
     return posts.map((post, i) => {
+      const postUps = post.get('data');
+      const postUrl = post.get('data');
+      const postTitle = post.get('data');
+      const postAuthor = post.get('data');
       return (
         <div key={i}>
           <span>
-            <a href={post.get('data').get('url')}>{post.get('data').get('title')}</a>
+            <a href={postUrl}>{postUps} - {postTitle} - {postAuthor}</a>
           </span>
         </div>
       );
@@ -102,6 +108,7 @@ class App extends React.Component {
     return (
       <div>
         <AlterSubReddit
+          inputValue={this.state.inputValue}
           onChange={(e) => this.handleInputChange(e)}
           onSubmit={(e) => this.changeSubReddit(e)}
           subreddit={this.state.subreddit}
