@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import rootReducer from './reducers';
 
 import App from './components/App';
+import RedditFeed from './components/RedditFeed';
 
 const logger = createLogger();
 

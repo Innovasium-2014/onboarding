@@ -2,33 +2,44 @@ import React from 'react';
 // import cx from 'classnames';
 import $ from 'jquery';
 import Immutable from 'immutable';
+import { getPosts } from '../actions/RedditActions';
 // import Select from 'react-select';
 // import Icon from '../Icon';
 
-const RedditFeed = React.createClass({
+class RedditFeed extends React.Component {
 
+  constructor(props) {
+      super(props);
+      this.state = {
+        subreddit: 'uwaterloo',
+        posts: this.props.value
+      };
+    }
+
+  static propTypes = {
+    getHandler: React.PropTypes.func.isRequired
+  }
   getInitialState() {
-    return {
-      subreddit: 'UWaterloo',
-      posts: []
-    };
-  },
+    // return {
+    //   subreddit: 'UWaterloo',
+    //   posts: []
+    // };
+  }
 
-  componentWillMount() {
-    const url = 'http://www.reddit.com/r/' + this.state.subreddit + '.json';
-    let subredditFeed;
-    $.getJSON( url, function (data) {
-      subredditFeed = data.data;
-    });
+  createFeed(){
     this.setState({
       posts: subredditFeed
-    });
-    console.log(this.state.posts);
-  },
+    })
+    console.log(subredditFeed);
+  }
+
+  componentWillMount() {
+    this.props.getHandler();
+  }
 
   _postList() {
     const posts = this.state.posts;
-    // console.log(posts);
+    console.log(posts);
     return posts.map((post, i) => {
       return (
         <div key={i}>
@@ -38,25 +49,26 @@ const RedditFeed = React.createClass({
         </div>
       );
     });
-  },
+  }
 
   _renderContent() {
-    const url = 'http://www.reddit.com/r/' + this.state.subreddit;
+    const url = 'http://www.reddit.com/r/uwaterloo';
     return (
       <div>
-        <a href={url}>{ this.state.subreddit }</a>
+        <a href={url}>Uwaterloo</a>
         {this._postList()}
       </div>
     );
-  },
+  }
 
   render() {
     return (
       <div>
         { this._renderContent() }
+        Hey
       </div>
     );
   }
-});
+}
 
 export default RedditFeed;

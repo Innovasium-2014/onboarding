@@ -4,7 +4,9 @@ import Immutable from 'immutable';
 import '../stylesheets/App.css';
 import Name from './Name';
 import NameForm from './NameForm';
+import RedditFeed from './RedditFeed';
 import { addStudent } from '../actions/StudentActions';
+import { getPosts } from '../actions/RedditActions';
 
 const { func, instanceOf } = React.PropTypes;
 
@@ -14,13 +16,17 @@ class App extends React.Component {
     super();
     this.state = {
       inputValue: '',
-      inputError: ''
+      inputError: '',
+      subreddit: 'uwaterloo',
+      posts: []
     };
   }
 
   static propTypes = {
     students: instanceOf(Immutable.list),
-    addStudent: func.isRequired
+    reddits: instanceOf(Immutable.list),
+    addStudent: func.isRequired,
+    getPosts: func.isRequired
   }
 
   addHandler(e) {
@@ -38,7 +44,7 @@ class App extends React.Component {
   }
 
   deleteHandler(e) {
-    
+
   }
 
   _renderNames() {
@@ -62,6 +68,12 @@ class App extends React.Component {
     });
   }
 
+  getHandler(){
+    const url = 'http://www.reddit.com/r/' + this.state.subreddit + '.json';
+    this.props.getPosts(url);
+    console.log(this.state);
+  }
+
   render() {
     return (
       <div>
@@ -70,6 +82,10 @@ class App extends React.Component {
         value={this.state.inputValue}
         onChange={(e) => handleInputChange(e)}
         addHandler={(e) => this.addHandler(e)}
+        />
+        <RedditFeed
+        getHandler={() => this.getHandler()}
+        value={this.state}
         />
         { this._renderNames }
       </div>
@@ -80,12 +96,14 @@ class App extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    // add the state from the reducers here
+    students: state.students,
+    reddits: state.reddits
   };
 }
 
 const actionCreators = {
-  // add the actions here
+  addStudent,
+  getPosts
 };
 
 export default connect(mapStateToProps, actionCreators)(App);
