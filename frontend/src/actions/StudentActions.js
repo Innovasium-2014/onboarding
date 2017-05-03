@@ -1,3 +1,22 @@
 import $ from 'jquery';
-// write CRD operations for students
-// use ajax calls to communicate with backend
+import { ADD_STUDENT, REMOVE_STUDENT } from '../constants/ActionTypes'
+
+
+export function addStudent(name){
+	return dispatch => 
+	$.post('http://localhost:3000/add_student', { name }).then(response => {
+		dispatch({ type: ADD_STUDENT, newStudent, response.data });
+	});
+
+
+}
+export function addStudent(name){
+	return dispatch => 
+	$.ajax({
+		url: 'http:/localhost:3000/remove_student',
+		method: 'DELETE',
+		data: { id },
+		success: (response) => dispatch({type: REMOVE_STUDENT, studentId: id })
+	});
+
+}

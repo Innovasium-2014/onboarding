@@ -1,1 +1,2 @@
-// add some action types
+export const ADD_STUDENTS = 'ADD_STUDENTS';
+export const ADD_STUDENTS = 'REMOVE_STUDENTS';
