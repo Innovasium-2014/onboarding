@@ -8,55 +8,30 @@ import { getPosts } from '../actions/RedditActions';
 
 class RedditFeed extends React.Component {
 
-  constructor(props) {
-      super(props);
-      this.state = {
-        subreddit: 'uwaterloo',
-        posts: this.props.value
-      };
-    }
-
   static propTypes = {
-    getHandler: React.PropTypes.func.isRequired
-  }
-  getInitialState() {
-    // return {
-    //   subreddit: 'UWaterloo',
-    //   posts: []
-    // };
+    getHandler: React.PropTypes.func.isRequired,
+    _postList: React.PropTypes.func.isRequired
   }
 
   createFeed(){
     this.setState({
       posts: subredditFeed
     })
-    console.log(subredditFeed);
+    //console.log(subredditFeed);
   }
 
   componentWillMount() {
     this.props.getHandler();
   }
 
-  _postList() {
-    const posts = this.state.posts;
-    console.log(posts);
-    return posts.map((post, i) => {
-      return (
-        <div key={i}>
-          <span>
-            <a href={post.data.url}>{post.data.title}</a>
-          </span>
-        </div>
-      );
-    });
-  }
-
   _renderContent() {
     const url = 'http://www.reddit.com/r/uwaterloo';
     return (
       <div>
-        <a href={url}>Uwaterloo</a>
-        {this._postList()}
+      <center>
+        <h2><a href={url}>{this.props.subreddit}</a></h2>
+        </center>
+        {this.props._postList()}
       </div>
     );
   }

@@ -1,1 +1,7 @@
 /* styling for app here */
+.redditPost {
+  width: 95%;
+  border: 25px solid green;
+  padding: 25px;
+  margin: 25px;
+}

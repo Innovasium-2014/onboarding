@@ -5,8 +5,10 @@ import '../stylesheets/App.css';
 import Name from './Name';
 import NameForm from './NameForm';
 import RedditFeed from './RedditFeed';
+import SubredditForm from './SubredditForm';
 import { addStudent } from '../actions/StudentActions';
 import { getPosts } from '../actions/RedditActions';
+import { addSubreddit } from '../actions/SubredditActions';
 
 const { func, instanceOf } = React.PropTypes;
 
@@ -22,11 +24,19 @@ class App extends React.Component {
     };
   }
 
+  detDefaultProps() {
+    return{
+      subreddit: 'uwaterloo'
+    };
+  }
+
   static propTypes = {
     students: instanceOf(Immutable.list),
     reddits: instanceOf(Immutable.list),
+    subreddits: instanceOf(Immutable.list),
     addStudent: func.isRequired,
-    getPosts: func.isRequired
+    getPosts: func.isRequired,
+    addSubreddit: func.isRequired
   }
 
   addHandler(e) {
@@ -38,13 +48,42 @@ class App extends React.Component {
       });
       return false;
     }
-    this.props.addStudent(inputValue);
+    //console.log(this.props);
+    this.props.addSubreddit(inputValue);
+    //console.log(this.state.subreddits);
+    this.setState({
+      subreddit: this.state.subreddits
+    })
     this.setState({ inputValue: '', inputError: '' });
     return false;
   }
 
-  deleteHandler(e) {
+  sortSub(e) {
+    e.preventDefault();
+    const { inputValue } = this.state;
+    console.log(inputValue);
+    const url = 'http://www.reddit.com/r/' + inputValue + '/top/.json';
+    if (inputValue) {
+      this.props.getPosts(url);
+      this.setState({
+        subreddit: inputValue,
+        inputValue: ''
+      });
+    }
+  }
 
+  changeSub(e) {
+    e.preventDefault();
+    const { inputValue } = this.state;
+    console.log(inputValue);
+    const url = 'http://www.reddit.com/r/' + inputValue + '.json';
+    if (inputValue) {
+      this.props.getPosts(url);
+      this.setState({
+        subreddit: inputValue,
+        inputValue: ''
+      });
+    }
   }
 
   _renderNames() {
@@ -52,11 +91,23 @@ class App extends React.Component {
       const studentId = student.get('id');
       return (
         <div key={studentId}>
-          <Name
-            name={student.get('name')}
-            studentId={studentId}
-            deleteHandler={this.deleteHandler}
-          />
+        </div>
+      );
+    });
+  }
+
+  _postList() {
+    const posts = (this.props.reddits && this.props.reddits.get('children')) || [];
+    //console.log('My posts: ' + posts);
+    return posts.map((post, i) => {
+      const cur_post = post.get('data');
+      return (
+        <div key={i} className="redditPost">
+          <span>
+            <h4><a href={cur_post.get('url')}>{cur_post.get('title')} </a></h4>
+            Up Votes: {cur_post.get('ups')}
+            <br /><br /><p>{cur_post.get('selftext')}</p>
+          </span>
         </div>
       );
     });
@@ -71,21 +122,23 @@ class App extends React.Component {
   getHandler(){
     const url = 'http://www.reddit.com/r/' + this.state.subreddit + '.json';
     this.props.getPosts(url);
-    console.log(this.state);
   }
 
   render() {
     return (
       <div>
-        <h1>My App</h1>
-        <NameForm
-        value={this.state.inputValue}
-        onChange={(e) => handleInputChange(e)}
-        addHandler={(e) => this.addHandler(e)}
+        <h1>Redditer</h1>
+        <SubredditForm
+        onSubmit={(e) => this.changeSub(e)}
+        onChange={(e) => this.handleInputChange(e)}
+        subreddit={this.state.subreddit}
+        inputValue={this.state.inputValue}
         />
         <RedditFeed
         getHandler={() => this.getHandler()}
+        _postList={() => this._postList()}
         value={this.state}
+        subreddit={this.state.subreddit}
         />
         { this._renderNames }
       </div>
@@ -97,12 +150,14 @@ class App extends React.Component {
 function mapStateToProps(state) {
   return {
     students: state.students,
-    reddits: state.reddits
+    reddits: state.reddits,
+    subreddits: state.subreddits
   };
 }
 
 const actionCreators = {
   addStudent,
+  addSubreddit,
   getPosts
 };
 
