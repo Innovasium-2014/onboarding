@@ -4,11 +4,12 @@ import Immutable from 'immutable';
 import '../stylesheets/App.css';
 import RedditFeed from './RedditFeed';
 import Name from './Name';
-import NameForm from './NameForm';
+// import NameForm from './NameForm';
+import AlterSubReddit from './AlterSubReddit';
 import { addStudent } from '../actions/StudentActions';
 import { getFeed } from '../actions/RedditActions';
 
-const { func, instanceOf } = React.PropTypes;
+const { func, instanceOf, string } = React.PropTypes;
 
 class App extends React.Component {
 
@@ -43,10 +44,36 @@ class App extends React.Component {
     return false;
   }
 
+  changeSubReddit(e) {
+    e.preventDefault();
+    const { inputValue } = this.state;
+    const url = 'http://www.reddit.com/r/' + inputValue + '.json';
+    if (inputValue) {
+      this.props.getFeed(url);
+      this.setState({
+        inputValue: '',
+        subreddit: inputValue
+      });
+    }
+  }
+
   getHandler() {
     const url = 'http://www.reddit.com/r/' + this.state.subreddit + '.json';
     this.setState({
       feedData: this.props.getFeed(url)
+    });
+  }
+
+  postList() {
+    const posts = (this.props.reddits && this.props.reddits.get('children')) || [];
+    return posts.map((post, i) => {
+      return (
+        <div key={i}>
+          <span>
+            <a href={post.get('data').get('url')}>{post.get('data').get('title')}</a>
+          </span>
+        </div>
+      );
     });
   }
 
@@ -74,15 +101,14 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>My App</h1>
-        <NameForm
-          value={this.state.inputValue}
-          onChange={(e) => handleInputChange(e)}
-          addHandler={(e) => this.addHandler(e)}
+        <AlterSubReddit
+          onChange={(e) => this.handleInputChange(e)}
+          onSubmit={(e) => this.changeSubReddit(e)}
+          subreddit={this.state.subreddit}
         />
-        { this.renderNames }
         <RedditFeed
           getHandler={() => this.getHandler()}
+          postList={() => this.postList()}
         />
       </div>
     );

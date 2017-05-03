@@ -6,7 +6,7 @@ const initialState = Immutable.fromJS([]);
 export default function reddits(state = initialState, action) {
   switch (action.type) {
   case GET_FEED:
-    return state.push(Immutable.fromJS(action.feed));
+    return Immutable.fromJS(action.feed);
 
   default:
     return state;
