@@ -1,5 +1,5 @@
 import Immutable from 'immutable';
-import { ADD_STUDENTS } from '../constants/ActionTypes';
+import { ADD_STUDENTS, REMOVE_STUDENT } from '../constants/ActionTypes';
 
 const initialState = Immutable.fromJS([]);
 

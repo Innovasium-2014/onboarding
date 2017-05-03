@@ -4,29 +4,34 @@ import Immutable from 'immutable';
 import '../stylesheets/App.css';
 import Name from './Name';
 import NameForm from './NameForm';
-import { addStudent } from '../actions/StudentActions';
+import { addStudent, getFeed } from '../actions/StudentActions';
+import RedditFeed from './RedditFeed';
 
 const { arrayOf, shape, number, string, func, instanceOf, oneOfType } = React.PropTypes;
 
 class App extends React.Component {
 
-	constructor((){
+	constructor(){
 		super()
 		this.state = {
 			inputValue: '',
-			inputError: ''
+			inputError: '',
+			redditjson: {},
+			subreddit: 'UWaterloo'
+
 		};
 	}
 
 	static propTypes = {
 		addStudent : func.isRequired ,
-		students : instanceOf(Immutable.List)
+		students : instanceOf(Immutable.List),
+		getFeed: func.isRequired
 	}
 
 	handleInputChange(e){
 		this.setState({
 			inputValue: e.target.value
-		};)
+		});
 	}
 
 	renderNames(){
@@ -61,7 +66,11 @@ class App extends React.Component {
 		return false;
 	}
 
-
+	getHandler() {
+		const url = 'http://www.reddit.com/r/' + this.state.subreddit + '.json';
+		this.setState({redditjson : this.props.getFeed(url) });
+		return false;
+	}
 
 
 	render(){
@@ -69,12 +78,12 @@ class App extends React.Component {
 			<div>
 			<h1> My App </h1>
 			<NameForm
-			value={this.state.inputValue}
-			onChange={(e) => this.handleInputChange(e)}
-			addHandler={(e) => this.addHandler(e)}
-			>
+				value={this.state.inputValue}
+				onChange={(e) => this.handleInputChange(e)}
+				addHandler={(e) => this.addHandler(e)}
+			/>
 			{this.renderNames()}
-			{inputError && inputError}
+			<RedditFeed getHandler = {() => this.getHandler()}/>
 		</div>	
 		);
 	}
@@ -82,12 +91,14 @@ class App extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    // add the state from the reducers here
+ 	students: state.students,
+ 	reddits: state.reddits
   };
 }
 
 const actionCreators = {
-  // add the actions here
+  addStudent, 
+  getFeed
 };
 
 export default connect(mapStateToProps, actionCreators)(App);

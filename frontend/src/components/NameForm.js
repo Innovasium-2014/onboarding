@@ -12,7 +12,7 @@ class NameForm extends React.Component {
 		onChange: React.PropTypes.func.isRequired,
 		value: React.PropTypes.string.isRequired,
 		addHandler: React.PropTypes.func.isRequired
-	}
+	};
 
 
 
@@ -21,7 +21,7 @@ class NameForm extends React.Component {
   		return(
   			<form onSubmit = {this.props.addHandler}>
   				<input type="text" className= "text-box" onChange = {this.props.onChange} value = {this.props.value}/>
-  			</form>
+  			</form>);
   }
 }
 
