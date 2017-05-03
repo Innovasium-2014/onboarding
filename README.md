@@ -1,25 +1,37 @@
 # Onboarding
 
+#### [Get started with Github](tutorials/github.md)
+#### [Get started with React & Ruby](tutorials/tutorials.md)
+
 ## Co-op Student List
-Add your name here in your first pull request!
+#### Add your name here in your first pull request!
+
+- Andrew Lazenka x2 
+
+- Jacob Steves
+
+- Brant Vanderveen
+
+## Co-op Student Alumni
+
+- Tom Nies
+
+- Jason Xu
 
 - Alexander Glover
 
--
+- Jordan Edwards
 
--
+- Jeremy Kim
 
-## Documentation Links
+- Andrew Lazenka
 
-[Useful Links and Tutorials](tutorials/tutorials.md)  
-[GitHub Introduction](tutorials/github.md)
+- Andrew Jung
 
-## To set up:
-Run `npm install` in frontend folder.
+- Julian Pettit
 
-Run `bundle install` in backend folder.
+- William Lo
 
-## To Start App:
-Run `npm start` in frontend folder for client.
+- Arham Ahmed
 
-Run `pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start` then run `rails server` in backend folder for rails server.
+- Keren Chandran
