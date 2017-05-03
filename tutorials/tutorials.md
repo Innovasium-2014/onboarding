@@ -6,14 +6,15 @@ Here are some useful resources for getting up and running with frontend developm
  - [Javascript Essential Training](https://www.lynda.com/JavaScript-tutorials/JavaScript-Essential-Training/81266-2.html?srchtrk=index:1%0Alinktypeid:2%0Aq:javascript%2Bessential%2Btraining%0Apage:1%0As:relevance%0Asa:true%0Aproducttypeid:2)  (5 hours 31mins) 
  - [Javascript Style Guide](https://github.com/airbnb/javascript) (~ 30 minute read)
  - [Learn Javascript E-Book](https://gitbookio.gitbooks.io/javascript/content/)
- - [IIFE (immediately-invoked function expression)] (https://toddmotto.com/what-function-window-document-undefined-iife-really-means/)
+ - [IIFE (immediately-invoked function expression)](https://toddmotto.com/what-function-window-document-undefined-iife-really-means/)
+ - [Immutable JS](https://facebook.github.io/immutable-js/)
 2. ES6:
  - [Learn ES6](https://egghead.io/courses/learn-es6-ecmascript-2015?utm_source=drip&utm_medium=email&utm_campaign=learn-es6)
  - [Essential ES6](https://www.youtube.com/watch?v=CozSF5abcTA): this video will introduce you to some new Javascript language features we are using in our apps. 
  - [ES6 for Humans](https://github.com/metagrover/ES6-for-humans)
  - [ES6 Features](http://es6-features.org/)
 3. React:
- - [React Official Tutorial](http://facebook.github.io/react/docs/tutorial.html)
+ - [React Official Tutorial](https://facebook.github.io/react/tutorial/tutorial.html)
  - [Build with ReactJS](http://buildwithreact.com/#articles)
  - [React.js Fundamentals](http://courses.reactjsprogram.com/courses/reactjsfundamentals)
 4. JSX:
