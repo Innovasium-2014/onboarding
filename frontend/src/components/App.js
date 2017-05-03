@@ -2,9 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Immutable from 'immutable';
 import '../stylesheets/App.css';
+import RedditFeed from './RedditFeed';
 import Name from './Name';
 import NameForm from './NameForm';
 import { addStudent } from '../actions/StudentActions';
+import { getFeed } from '../actions/RedditActions';
 
 const { func, instanceOf } = React.PropTypes;
 
@@ -14,13 +16,17 @@ class App extends React.Component {
     super();
     this.state = {
       inputValue: '',
-      inputError: ''
+      inputError: '',
+      feedData: {},
+      subreddit: 'UWaterloo'
     };
   }
 
   static propTypes = {
     students: instanceOf(Immutable.list),
-    addStudent: func.isRequired
+    reddits: instanceOf(Immutable.list),
+    addStudent: func.isRequired,
+    getFeed: func.isRequired
   }
 
   addHandler(e) {
@@ -37,11 +43,14 @@ class App extends React.Component {
     return false;
   }
 
-  deleteHandler(e) {
-    
+  getHandler() {
+    const url = 'http://www.reddit.com/r/' + this.state.subreddit + '.json';
+    this.setState({
+      feedData: this.props.getFeed(url)
+    });
   }
 
-  _renderNames() {
+  renderNames() {
     return this.props.students.map((student) => {
       const studentId = student.get('id');
       return (
@@ -67,11 +76,14 @@ class App extends React.Component {
       <div>
         <h1>My App</h1>
         <NameForm
-        value={this.state.inputValue}
-        onChange={(e) => handleInputChange(e)}
-        addHandler={(e) => this.addHandler(e)}
+          value={this.state.inputValue}
+          onChange={(e) => handleInputChange(e)}
+          addHandler={(e) => this.addHandler(e)}
         />
-        { this._renderNames }
+        { this.renderNames }
+        <RedditFeed
+          getHandler={() => this.getHandler()}
+        />
       </div>
     );
   }
@@ -80,12 +92,14 @@ class App extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    // add the state from the reducers here
+    students: state.students,
+    reddits: state.reddits
   };
 }
 
 const actionCreators = {
-  // add the actions here
+  addStudent,
+  getFeed
 };
 
 export default connect(mapStateToProps, actionCreators)(App);
