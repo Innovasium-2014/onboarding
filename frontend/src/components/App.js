@@ -20,7 +20,8 @@ class App extends React.Component {
       inputValue: '',
       inputError: '',
       feedData: {},
-      subreddit: 'UWaterloo'
+      subreddit: 'UWaterloo',
+      sameWarning: false
     };
   }
 
@@ -74,7 +75,21 @@ class App extends React.Component {
   }
 
   clickToAdd() {
-    this.props.createFavorite(this.state.subreddit);
+    const favorites = this.props.reddits.get('favorites');
+    return favorites.map((favorite, i) => {
+      if (this.state.subreddit === favorite.get('name')) {
+        this.setState({
+          sameWarning: true
+        });
+        return false;
+      }
+      if (i === favorites.length) {
+        this.setState({
+          sameWarning: false
+        });
+        this.props.createFavorite(this.state.subreddit);
+      }
+    });
   }
 
   clickToRemove(id) {
@@ -96,7 +111,13 @@ class App extends React.Component {
         <div key={i}>
           <div className='favoritesCard'>
             <div className='subredditName'>
-              <a href='javascript:void(0)' className='dullLink' onClick={() => this.loadFavorite(favoriteName)}>{favoriteName}</a>
+              <a
+                href='javascript:void(0)'
+                className='dullLink'
+                onClick={() => this.loadFavorite(favoriteName)}
+              >
+                {favoriteName}
+              </a>
             </div>
             <div className='removeButton'>
               <button
@@ -174,6 +195,7 @@ class App extends React.Component {
           clickToAdd={() => this.clickToAdd()}
           createFavorite={(e) => this.props.createFavorite(e)}
           subreddit={this.state.subreddit}
+          sameWarning={this.state.sameWarning}
         />
         <div className="display">
           <RedditFeed

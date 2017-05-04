@@ -13,7 +13,8 @@ class AlterSubReddit extends React.Component {
     inputValue: React.PropTypes.string,
     onChange: React.PropTypes.func.isRequired,
     onSubmit: React.PropTypes.func.isRequired,
-    clickToAdd: React.PropTypes.func.isRequired
+    clickToAdd: React.PropTypes.func.isRequired,
+    sameWarning: React.PropTypes.bool.isRequired
   }
 
   renderContent() {
@@ -21,13 +22,22 @@ class AlterSubReddit extends React.Component {
     return (
       <div>
         <a href={url}><h2>{this.props.subreddit}</h2></a>
-        <form onSubmit={this.props.onSubmit}>
-          <input
-            placeholder='Change Subreddit...'
-            onChange={this.props.onChange}
-            value={this.props.inputValue}
-          />
-        </form>
+        <div>
+          <div>
+            <form onSubmit={this.props.onSubmit}>
+              <input
+                placeholder='Change Subreddit...'
+                onChange={this.props.onChange}
+                value={this.props.inputValue}
+              />
+            </form>
+          </div>
+          {(this.props.sameWarning) &&
+            <div>
+              <h6>You have already favorited this subreddit</h6>
+            </div>
+          }
+        </div>
         <button
           className='btn btn-success'
           onClick={this.props.clickToAdd}
