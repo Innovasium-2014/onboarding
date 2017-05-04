@@ -31,6 +31,7 @@ class App extends React.Component {
     getFeed: func.isRequired,
     getFavorites: func.isRequired,
     createFavorite: func.isRequired,
+    removeFavorite: func.isRequired,
     inputValue: string
   }
 
@@ -76,6 +77,10 @@ class App extends React.Component {
     this.props.createFavorite(this.state.subreddit);
   }
 
+  clickToRemove(id) {
+    this.props.removeFavorite(id);
+  }
+
   getHandler() {
     const url = 'http://www.reddit.com/r/' + this.state.subreddit + '.json';
     this.props.getFeed(url);
@@ -86,11 +91,20 @@ class App extends React.Component {
     const posts = (this.props.reddits && this.props.reddits.get('favorites')) || [];
     return posts.map((post, i) => {
       const favoriteName = post.get('name');
+      const favoriteId = post.get('id');
       return (
         <div key={i}>
           <div className='favoritesCard'>
             <div className='subredditName'>
-              <a href='javascript:void(0)' onClick={() => this.loadFavorite(favoriteName)}>{favoriteName}</a>
+              <a href='javascript:void(0)' className='dullLink' onClick={() => this.loadFavorite(favoriteName)}>{favoriteName}</a>
+            </div>
+            <div className='removeButton'>
+              <button
+                className='btn btn-danger'
+                onClick={() => this.clickToRemove(favoriteId)}
+              >
+                Remove
+              </button>
             </div>
           </div>
         </div>

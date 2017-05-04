@@ -11,3 +11,17 @@
 	margin-left: 5%;
 	border-radius: 5px;
 }
+
+a:link {
+  color: black;
+}
+
+.subredditName {
+  float: left;
+  width: 70%;
+}
+
+.removeButtonm {
+  float: left;
+  width: 30%;
+}
