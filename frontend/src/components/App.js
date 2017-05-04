@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Immutable from 'immutable';
 import '../stylesheets/App.css';
 import '../stylesheets/RedditFeed.css';
+import '../stylesheets/FavoritesList.css';
 import RedditFeed from './RedditFeed';
 import FavoritesList from './FavoritesList';
 import AlterSubReddit from './AlterSubReddit';
@@ -63,6 +64,14 @@ class App extends React.Component {
     }
   }
 
+  loadFavorite(name) {
+    const url = 'http://www.reddit.com/r/' + name + '.json';
+    this.props.getFeed(url);
+    this.setState({
+      subreddit: name
+    });
+  }
+
   clickToAdd() {
     this.props.createFavorite(this.state.subreddit);
   }
@@ -79,9 +88,9 @@ class App extends React.Component {
       const favoriteName = post.get('name');
       return (
         <div key={i}>
-          <div className='card'>
+          <div className='favoritesCard'>
             <div className='subredditName'>
-              {favoriteName}
+              <a href='javascript:void(0)' onClick={() => this.loadFavorite(favoriteName)}>{favoriteName}</a>
             </div>
           </div>
         </div>
@@ -100,7 +109,7 @@ class App extends React.Component {
       const authorLink = 'http://www.reddit.com/user/' + postAuthor;
       return (
         <div key={i}>
-          <div className='card'>
+          <div className='subredditCard'>
             <div className='ups'>
               {postUps}
             </div>

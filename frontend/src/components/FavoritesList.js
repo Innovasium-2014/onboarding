@@ -15,7 +15,7 @@ class FavoritesList extends React.Component {
 
   renderContent() {
     return (
-      <div className='postList'>
+      <div className='favoritesList'>
         {this.props.favoriteList()}
       </div>
     );
