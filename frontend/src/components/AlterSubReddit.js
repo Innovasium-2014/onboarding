@@ -22,7 +22,7 @@ class AlterSubReddit extends React.Component {
         <a href={url}><h2>{this.props.subreddit}</h2></a>
         <form onSubmit={this.props.onSubmit}>
           <input
-            placeholder='Subreddit Name...'
+            placeholder='Change Subreddit...'
             onChange={this.props.onChange}
             value={this.props.inputValue}
           />

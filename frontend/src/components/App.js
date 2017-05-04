@@ -2,9 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Immutable from 'immutable';
 import '../stylesheets/App.css';
+import '../stylesheets/RedditFeed.css';
 import RedditFeed from './RedditFeed';
-import Name from './Name';
-// import NameForm from './NameForm';
 import AlterSubReddit from './AlterSubReddit';
 import { addStudent } from '../actions/StudentActions';
 import { getFeed } from '../actions/RedditActions';
@@ -72,15 +71,27 @@ class App extends React.Component {
       const postUps = post.get('data').get('ups');
       const postUrl = post.get('data').get('url');
       const postTitle = post.get('data').get('title');
+      const postThumb = (post.get('data').get('thumbnail') && post.get('data').get('thumbnail')) ||
+      'https://lh3.googleusercontent.com/J41hsV2swVteoeB8pDhqbQR3H83NrEBFv2q_kYdq1xp9vsI1Gz9A9pzjcwX_JrZpPGsa=w300';
       const postAuthor = post.get('data').get('author');
       const authorLink = 'http://www.reddit.com/user/' + postAuthor;
       return (
         <div key={i}>
-          <span>
-            {postUps} -
-            <a href={postUrl}>{postTitle}</a> -
-            <a href={authorLink}>{postAuthor}</a>
-          </span>
+          <div className='card'>
+            <div className='ups'>
+              {postUps}
+            </div>
+            <div className='thumbnailDiv'>
+              <img src={postThumb} alt='thumbnail' className='thumbnailImage' />
+            </div>
+            <div className='title'>
+              <a href={postUrl}>{postTitle}</a>
+            </div>
+            <div className='author'>
+              <h6>Submitted by:</h6>
+              <a href={authorLink}>{postAuthor}</a>
+            </div>
+          </div>
         </div>
       );
     });

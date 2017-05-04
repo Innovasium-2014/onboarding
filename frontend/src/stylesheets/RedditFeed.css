@@ -1,0 +1,56 @@
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.30);
+  background-color: #F2F2EB;
+  height: 120px;
+  padding: 5;
+  padding-right: 20;
+  padding-left: 20;
+  padding-bottom: 10;
+  margin-bottom: 10;
+  width: 80%;
+	margin-left: 5%;
+	border-radius: 5px;
+}
+
+.ups {
+	width: 10%;
+	font-size: 25;
+	float: left;
+}
+
+.title {
+	width: 55%;
+	float: left;
+	word-wrap: break-word;
+}
+
+.author {
+	width: 25%;
+	float: right;
+}
+
+.thumbnailDiv {
+	float: left;
+	width: 20%;
+}
+
+.thumbnailImage {
+	width: 80%;
+	height: 80%;
+	border-radius: 10px;
+}
+
+.postList {
+	float: left;
+	width: 50%;
+}
+
+.favoritesList {
+	float: left;
+	width: 50%;
+}
+
+.display {
+	width: 100%;
+	position: absolute;
+}

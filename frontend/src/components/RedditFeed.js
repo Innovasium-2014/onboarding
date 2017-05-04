@@ -1,4 +1,5 @@
 import React from 'react';
+import '../stylesheets/RedditFeed.css';
 
 class RedditFeed extends React.Component {
 
@@ -19,8 +20,10 @@ class RedditFeed extends React.Component {
 
   renderContent() {
     return (
-      <div>
-        {this.props.postList()}
+      <div className='display'>
+        <div className='postList'>
+          {this.props.postList()}
+        </div>
       </div>
     );
   }
