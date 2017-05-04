@@ -8,3 +8,4 @@ export const GET_FEED = 'GET_FEED';
 export const GET_FAVORITES = 'GET_FAVORITES';
 export const CREATE_FAVORITE = 'CREATE_FAVORITE';
 export const REMOVE_FAVORITE = 'REMOVE_FAVORITE';
+export const SORT_BY_UPS = 'SORT_BY_UPS';

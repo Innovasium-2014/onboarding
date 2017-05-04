@@ -3,7 +3,8 @@ import {
   GET_FEED,
   GET_FAVORITES,
   CREATE_FAVORITE,
-  REMOVE_FAVORITE
+  REMOVE_FAVORITE,
+  SORT_BY_UPS
 } from '../constants/ActionTypes';
 
 const initialState = Immutable.Map({
@@ -25,7 +26,9 @@ export default function reddits(state = initialState, action) {
     return newState;
 
   case CREATE_FAVORITE:
-    return state.update('favorites', favorites => favorites.push(Immutable.fromJS(action.newFavorite)));
+    return state.update('favorites',
+      favorites => favorites.push(Immutable.fromJS(action.newFavorite))
+    );
 
   case REMOVE_FAVORITE:
     newState = newState.toJS().favorites;
@@ -33,6 +36,9 @@ export default function reddits(state = initialState, action) {
       return favorite.id !== action.redditId;
     });
     return Immutable.fromJS({ feed: feed, favorites: newState });
+
+  case SORT_BY_UPS:
+    
 
   default:
     return state;

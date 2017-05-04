@@ -14,7 +14,9 @@ class AlterSubReddit extends React.Component {
     onChange: React.PropTypes.func.isRequired,
     onSubmit: React.PropTypes.func.isRequired,
     clickToAdd: React.PropTypes.func.isRequired,
-    sameWarning: React.PropTypes.bool.isRequired
+    sameWarning: React.PropTypes.bool.isRequired,
+    sortByUps: React.PropTypes.func.isRequired,
+    buttonText: React.PropTypes.string.isRequired
   }
 
   renderContent() {
@@ -43,6 +45,12 @@ class AlterSubReddit extends React.Component {
           onClick={this.props.clickToAdd}
         >
           Add to Favorites
+        </button>
+        <button
+          className='btn btn-success'
+          onClick={this.props.sortByUps}
+        >
+          {this.props.buttonText}
         </button>
       </div>
     );

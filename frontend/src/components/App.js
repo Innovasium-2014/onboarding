@@ -21,7 +21,10 @@ class App extends React.Component {
       inputError: '',
       feedData: {},
       subreddit: 'UWaterloo',
-      sameWarning: false
+      sameWarning: false,
+      sort: 0,
+      buttonText: 'Sort (Ascending)',
+      feeds: Immutable.fromJS({})
     };
   }
 
@@ -34,6 +37,14 @@ class App extends React.Component {
     createFavorite: func.isRequired,
     removeFavorite: func.isRequired,
     inputValue: string
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.reddits.get('feed').get('children')) {
+      this.setState({
+        feeds: nextProps.reddits.get('feed').get('children')
+      });
+    }
   }
 
   addHandler(e) {
@@ -76,20 +87,19 @@ class App extends React.Component {
 
   clickToAdd() {
     const favorites = this.props.reddits.get('favorites');
-    return favorites.map((favorite, i) => {
-      if (this.state.subreddit === favorite.get('name')) {
-        this.setState({
-          sameWarning: true
-        });
-        return false;
-      }
-      if (i === favorites.length) {
-        this.setState({
-          sameWarning: false
-        });
-        this.props.createFavorite(this.state.subreddit);
-      }
+    var result = favorites.find((favorite) => {
+      return favorite.get('name') === this.state.subreddit;
     });
+    if (result) {
+      this.setState({
+        sameWarning: true
+      });
+    } else {
+      this.setState({
+        sameWarning: false
+      });
+      this.props.createFavorite(this.state.subreddit);
+    }
   }
 
   clickToRemove(id) {
@@ -100,6 +110,43 @@ class App extends React.Component {
     const url = 'http://www.reddit.com/r/' + this.state.subreddit + '.json';
     this.props.getFeed(url);
     this.props.getFavorites();
+  }
+
+  sortByUps() {
+    const favorites = this.state.feeds;
+    let sortedState;
+    let newSortState;
+    let newButtonText;
+    if (this.state.sort > 0) {
+      sortedState = favorites.sort((a, b) => {
+        const first = a.getIn(['data', 'ups']);
+        const second = b.getIn(['data', 'ups']);
+        if (first < second) { return -1; }
+        if (first > second) { return 1; }
+        if (first === second) { return 0; }
+      });
+      newSortState = -1;
+      newButtonText = 'Default';
+    } else if (this.state.sort < 0) {
+      sortedState = this.props.reddits.get('feed').get('children');
+      newSortState = 0;
+      newButtonText = 'Sort (Ascending)';
+    } else {
+      sortedState = favorites.sort((a, b) => {
+        const first = a.getIn(['data', 'ups']);
+        const second = b.getIn(['data', 'ups']);
+        if (first < second) { return 1; }
+        if (first > second) { return -1; }
+        if (first === second) { return 0; }
+      });
+      newSortState = 1;
+      newButtonText = 'Sort (Descending)';
+    }
+    this.setState({
+      feeds: sortedState,
+      sort: newSortState,
+      buttonText: newButtonText
+    });
   }
 
   favoriteList() {
@@ -134,12 +181,12 @@ class App extends React.Component {
   }
 
   postList() {
-    const posts = (this.props.reddits && this.props.reddits.getIn(['feed', 'children'])) || [];
+    const posts = (this.state.feeds && this.state.feeds) || [];
     return posts.map((post, i) => {
       const postUps = post.getIn(['data', 'ups']);
       const postUrl = post.getIn(['data', 'url']);
       const postTitle = post.getIn(['data', 'title']);
-      const postThumb = post.getIn(['data', 'thumbnail']) === '' || 'self' ? 'https://lh3.googleusercontent.com/J41hsV2swVteoeB8pDhqbQR3H83NrEBFv2q_kYdq1xp9vsI1Gz9A9pzjcwX_JrZpPGsa=w300' : post.getIn(['data', 'thumbnail']);
+      const postThumb = post.getIn(['data', 'thumbnail']) === '' || post.getIn(['data', 'thumbnail']) === 'self' ? 'https://lh3.googleusercontent.com/J41hsV2swVteoeB8pDhqbQR3H83NrEBFv2q_kYdq1xp9vsI1Gz9A9pzjcwX_JrZpPGsa=w300' : post.getIn(['data', 'thumbnail']);
       const postAuthor = post.getIn(['data', 'author']);
       const authorLink = 'http://www.reddit.com/user/' + postAuthor;
       return (
@@ -164,20 +211,20 @@ class App extends React.Component {
     });
   }
 
-  renderNames() {
-    return this.props.students.map((student) => {
-      const studentId = student.get('id');
-      return (
-        <div key={studentId}>
-          <Name
-            name={student.get('name')}
-            studentId={studentId}
-            deleteHandler={this.deleteHandler}
-          />
-        </div>
-      );
-    });
-  }
+    // renderNames() {
+    //   return this.props.students.map((student) => {
+    //     const studentId = student.get('id');
+    //     return (
+    //       <div key={studentId}>
+    //         <Name
+    //           name={student.get('name')}
+    //           studentId={studentId}
+    //           deleteHandler={this.deleteHandler}
+    //         />
+    //       </div>
+    //     );
+    //   });
+    // }
 
   handleInputChange(e) {
     this.setState({
@@ -196,6 +243,8 @@ class App extends React.Component {
           createFavorite={(e) => this.props.createFavorite(e)}
           subreddit={this.state.subreddit}
           sameWarning={this.state.sameWarning}
+          sortByUps={() => this.sortByUps()}
+          buttonText={this.state.buttonText}
         />
         <div className="display">
           <RedditFeed

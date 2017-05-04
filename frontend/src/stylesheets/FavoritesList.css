@@ -16,6 +16,10 @@ a:link {
   color: black;
 }
 
+a:visited {
+  color: hotpink;
+}
+
 .subredditName {
   float: left;
   width: 70%;
