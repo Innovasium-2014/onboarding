@@ -20,10 +20,8 @@ class RedditFeed extends React.Component {
 
   renderContent() {
     return (
-      <div className='display'>
-        <div className='postList'>
-          {this.props.postList()}
-        </div>
+      <div className='postList'>
+        {this.props.postList()}
       </div>
     );
   }

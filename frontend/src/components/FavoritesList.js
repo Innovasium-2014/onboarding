@@ -9,18 +9,14 @@ class FavoritesList extends React.Component {
     };
   }
 
-  componentWillMount() {
-    this.props.getHandler();
-  }
-
   static propTypes = {
-    getHandler: React.PropTypes.func.isRequired,
-    postList: React.PropTypes.func.isRequired
+    favoriteList: React.PropTypes.func.isRequired
   }
 
   renderContent() {
     return (
-      <div>
+      <div className='postList'>
+        {this.props.favoriteList()}
       </div>
     );
   }

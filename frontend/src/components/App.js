@@ -4,6 +4,7 @@ import Immutable from 'immutable';
 import '../stylesheets/App.css';
 import '../stylesheets/RedditFeed.css';
 import RedditFeed from './RedditFeed';
+import FavoritesList from './FavoritesList';
 import AlterSubReddit from './AlterSubReddit';
 import { addStudent } from '../actions/StudentActions';
 import { getFeed, getFavorites, createFavorite, removeFavorite } from '../actions/RedditActions';
@@ -69,17 +70,34 @@ class App extends React.Component {
   getHandler() {
     const url = 'http://www.reddit.com/r/' + this.state.subreddit + '.json';
     this.props.getFeed(url);
+    this.props.getFavorites();
+  }
+
+  favoriteList() {
+    const posts = (this.props.reddits && this.props.reddits.get('favorites')) || [];
+    return posts.map((post, i) => {
+      const favoriteName = post.get('name');
+      return (
+        <div key={i}>
+          <div className='card'>
+            <div className='subredditName'>
+              {favoriteName}
+            </div>
+          </div>
+        </div>
+      );
+    });
   }
 
   postList() {
-    const posts = (this.props.reddits && this.props.reddits.get('children')) || [];
+    const posts = (this.props.reddits && this.props.reddits.getIn(['feed', 'children'])) || [];
     return posts.map((post, i) => {
-      const postUps = post.get('data').get('ups');
-      const postUrl = post.get('data').get('url');
-      const postTitle = post.get('data').get('title');
-      const postThumb = (post.get('data').get('thumbnail') && post.get('data').get('thumbnail')) ||
+      const postUps = post.getIn(['data', 'ups']);
+      const postUrl = post.getIn(['data', 'url']);
+      const postTitle = post.getIn(['data', 'title']);
+      const postThumb = (post.getIn(['data', 'thumbnail']) && post.getIn(['data', 'thumbnail'])) ||
       'https://lh3.googleusercontent.com/J41hsV2swVteoeB8pDhqbQR3H83NrEBFv2q_kYdq1xp9vsI1Gz9A9pzjcwX_JrZpPGsa=w300';
-      const postAuthor = post.get('data').get('author');
+      const postAuthor = post.getIn(['data', 'author']);
       const authorLink = 'http://www.reddit.com/user/' + postAuthor;
       return (
         <div key={i}>
@@ -135,10 +153,15 @@ class App extends React.Component {
           createFavorite={(e) => this.props.createFavorite(e)}
           subreddit={this.state.subreddit}
         />
-        <RedditFeed
-          getHandler={() => this.getHandler()}
-          postList={() => this.postList()}
-        />
+        <div className="display">
+          <RedditFeed
+            getHandler={() => this.getHandler()}
+            postList={() => this.postList()}
+          />
+          <FavoritesList
+            favoriteList={() => this.favoriteList()}
+          />
+        </div>
       </div>
     );
   }
