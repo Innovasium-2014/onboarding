@@ -5,8 +5,8 @@ class RedditController < ApplicationController
     return response_data('all reddits', Reddit.all, 200)
   end
 
-  def add
-    reddit = Reddit.create(add_params)
+  def create
+    reddit = Reddit.create(create_params)
     if reddit.save!
       return response_data('created', reddit, 200)
     end
@@ -32,7 +32,7 @@ class RedditController < ApplicationController
     end
   end
 
-  def add_params
+  def create_params
     params.permit(:name)
   end
 

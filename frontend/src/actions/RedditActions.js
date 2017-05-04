@@ -1,5 +1,10 @@
 import $ from 'jquery';
-import { GET_FEED, CREATE_FAVORITE, REMOVE_FAVORITE } from '../constants/ActionTypes';
+import {
+  GET_FEED,
+  GET_FAVORITES,
+  CREATE_FAVORITE,
+  REMOVE_FAVORITE
+} from '../constants/ActionTypes';
 
 export function getFeed(url) {
   return dispatch =>
@@ -8,9 +13,16 @@ export function getFeed(url) {
   });
 }
 
-export function createFavorite(url) {
+export function getFavorites() {
   return dispatch =>
-  $.get('http://localhost:3000/create_favorite', { url }).then(response => {
+  $.get('http://localhost:3000/get_favorites').then(response => {
+    dispatch({ type: GET_FAVORITES, favorites: response.data });
+  });
+}
+
+export function createFavorite(name) {
+  return dispatch =>
+  $.post('http://localhost:3000/create_favorite', { name }).then(response => {
     dispatch({ type: CREATE_FAVORITE, newFavorite: response.data });
   });
 }

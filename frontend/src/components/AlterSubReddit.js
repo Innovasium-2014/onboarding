@@ -12,7 +12,8 @@ class AlterSubReddit extends React.Component {
     subreddit: React.PropTypes.string.isRequired,
     inputValue: React.PropTypes.string,
     onChange: React.PropTypes.func.isRequired,
-    onSubmit: React.PropTypes.func.isRequired
+    onSubmit: React.PropTypes.func.isRequired,
+    clickToAdd: React.PropTypes.func.isRequired
   }
 
   renderContent() {
@@ -27,6 +28,12 @@ class AlterSubReddit extends React.Component {
             value={this.props.inputValue}
           />
         </form>
+        <button
+          className='btn btn-success'
+          onClick={this.props.clickToAdd}
+        >
+          Add to Favorites
+        </button>
       </div>
     );
   }

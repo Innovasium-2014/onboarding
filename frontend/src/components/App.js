@@ -6,7 +6,7 @@ import '../stylesheets/RedditFeed.css';
 import RedditFeed from './RedditFeed';
 import AlterSubReddit from './AlterSubReddit';
 import { addStudent } from '../actions/StudentActions';
-import { getFeed } from '../actions/RedditActions';
+import { getFeed, getFavorites, createFavorite, removeFavorite } from '../actions/RedditActions';
 
 const { func, instanceOf, string } = React.PropTypes;
 
@@ -27,6 +27,8 @@ class App extends React.Component {
     reddits: instanceOf(Immutable.list),
     addStudent: func.isRequired,
     getFeed: func.isRequired,
+    getFavorites: func.isRequired,
+    createFavorite: func.isRequired,
     inputValue: string
   }
 
@@ -58,6 +60,10 @@ class App extends React.Component {
         subreddit: inputValue
       });
     }
+  }
+
+  clickToAdd() {
+    this.props.createFavorite(this.state.subreddit);
   }
 
   getHandler() {
@@ -125,6 +131,8 @@ class App extends React.Component {
           inputValue={this.state.inputValue}
           onChange={(e) => this.handleInputChange(e)}
           onSubmit={(e) => this.changeSubReddit(e)}
+          clickToAdd={() => this.clickToAdd()}
+          createFavorite={(e) => this.props.createFavorite(e)}
           subreddit={this.state.subreddit}
         />
         <RedditFeed
@@ -146,7 +154,10 @@ function mapStateToProps(state) {
 
 const actionCreators = {
   addStudent,
-  getFeed
+  getFeed,
+  getFavorites,
+  createFavorite,
+  removeFavorite
 };
 
 export default connect(mapStateToProps, actionCreators)(App);
