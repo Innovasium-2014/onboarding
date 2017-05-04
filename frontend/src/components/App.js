@@ -95,8 +95,7 @@ class App extends React.Component {
       const postUps = post.getIn(['data', 'ups']);
       const postUrl = post.getIn(['data', 'url']);
       const postTitle = post.getIn(['data', 'title']);
-      const postThumb = (post.getIn(['data', 'thumbnail']) && post.getIn(['data', 'thumbnail'])) ||
-      'https://lh3.googleusercontent.com/J41hsV2swVteoeB8pDhqbQR3H83NrEBFv2q_kYdq1xp9vsI1Gz9A9pzjcwX_JrZpPGsa=w300';
+      const postThumb = post.getIn(['data', 'thumbnail']) === '' || 'self' ? 'https://lh3.googleusercontent.com/J41hsV2swVteoeB8pDhqbQR3H83NrEBFv2q_kYdq1xp9vsI1Gz9A9pzjcwX_JrZpPGsa=w300' : post.getIn(['data', 'thumbnail']);
       const postAuthor = post.getIn(['data', 'author']);
       const authorLink = 'http://www.reddit.com/user/' + postAuthor;
       return (

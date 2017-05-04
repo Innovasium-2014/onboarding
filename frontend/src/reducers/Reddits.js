@@ -22,7 +22,7 @@ export default function reddits(state = initialState, action) {
     newState = state.set('favorites', Immutable.fromJS(action.favorites));
     return newState;
   case CREATE_FAVORITE:
-    state.push(Immutable.toJS(action.newFavorite));
+    return state.update('favorites', favorites => favorites.push(Immutable.fromJS(action.newFavorite)));
   case REMOVE_FAVORITE:
     return state.filter((favorite) => {
       return favorite.get('id') !== action.redditId;
