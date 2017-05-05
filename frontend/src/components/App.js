@@ -19,8 +19,7 @@ class App extends React.Component {
     this.state = {
       inputValue: '',
       inputError: '',
-      feedData: {},
-      subreddit: 'UWaterloo',
+      subreddit: 'uwaterloo',
       sameWarning: false,
       sort: 0,
       upsSortButtonText: 'Upvotes - Ascending',
@@ -43,7 +42,8 @@ class App extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.reddits.get('feed').get('children')) {
       this.setState({
-        feeds: nextProps.reddits.get('feed').get('children')
+        feeds: nextProps.reddits.get('feed').get('children'),
+        subreddit: nextProps.reddits.getIn(['feed', 'children', 0, 'data', 'subreddit'])
       });
     }
   }
@@ -71,11 +71,11 @@ class App extends React.Component {
     const url = 'http://www.reddit.com/r/' + inputValue + '.json';
     if (inputValue) {
       this.props.getFeed(url);
-      this.setState({
-        inputValue: '',
-        subreddit: inputValue
-      });
     }
+    this.setState({
+      inputValue: '',
+      subreddit: this.state.feeds.getIn([1, 'data', 'subreddit'])
+    });
   }
 
   loadFavorite(name) {
@@ -122,7 +122,9 @@ class App extends React.Component {
       sortedState = feed.sort((a, b) => {
         const first = a.getIn(['data', 'ups']);
         const second = b.getIn(['data', 'ups']);
-        return second.localeCompare(first);
+        if (first < second) { return -1; }
+        if (first > second) { return 1; }
+        if (first === second) { return 0; }
       });
       newSortState = -1;
       newButtonText = 'Upvotes - Default';
@@ -134,7 +136,9 @@ class App extends React.Component {
       sortedState = feed.sort((a, b) => {
         const first = a.getIn(['data', 'ups']);
         const second = b.getIn(['data', 'ups']);
-        return first.localeCompare(second);
+        if (first < second) { return 1; }
+        if (first > second) { return -1; }
+        if (first === second) { return 0; }
       });
       newSortState = 1;
       newButtonText = 'Upvotes - (Descending)';
@@ -189,7 +193,7 @@ class App extends React.Component {
           <div className='favoritesCard'>
             <div className='subredditName'>
 
-              {!(this.state.subreddit === favoriteName) && 
+              {!(this.state.subreddit === favoriteName) &&
                 <a
                   href='javascript:void(0)'
                   className='dullLink'
@@ -224,7 +228,7 @@ class App extends React.Component {
       const postUps = post.getIn(['data', 'ups']);
       const postUrl = post.getIn(['data', 'url']);
       const postTitle = post.getIn(['data', 'title']);
-      const postThumb = post.getIn(['data', 'thumbnail']) === '' || post.getIn(['data', 'thumbnail']) === 'self' ? 'https://lh3.googleusercontent.com/J41hsV2swVteoeB8pDhqbQR3H83NrEBFv2q_kYdq1xp9vsI1Gz9A9pzjcwX_JrZpPGsa=w300' : post.getIn(['data', 'thumbnail']);
+      const postThumb = post.getIn(['data', 'thumbnail']).includes('jpg') ? post.getIn(['data', 'thumbnail']) : 'https://lh3.googleusercontent.com/J41hsV2swVteoeB8pDhqbQR3H83NrEBFv2q_kYdq1xp9vsI1Gz9A9pzjcwX_JrZpPGsa=w300';
       const postAuthor = post.getIn(['data', 'author']);
       const authorLink = 'http://www.reddit.com/user/' + postAuthor;
       return (

@@ -14,7 +14,7 @@
 
 .ups {
 	width: 10%;
-	font-size: 25;
+	font-size: 2em;
 	float: left;
 }
 
@@ -35,8 +35,7 @@
 }
 
 .thumbnailImage {
-	width: 80%;
-	height: 80%;
+	width: 50%;
 	border-radius: 10px;
 }
 
