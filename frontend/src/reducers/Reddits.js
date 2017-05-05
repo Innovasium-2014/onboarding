@@ -35,10 +35,7 @@ export default function reddits(state = initialState, action) {
     newState = newState.filter((favorite) => {
       return favorite.id !== action.redditId;
     });
-    return Immutable.fromJS({ feed: feed, favorites: newState });
-
-  case SORT_BY_UPS:
-    
+    return Immutable.fromJS({ feed: feed, favorites: newState });  
 
   default:
     return state;
