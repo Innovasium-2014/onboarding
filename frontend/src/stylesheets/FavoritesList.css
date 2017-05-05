@@ -22,10 +22,14 @@ a:visited {
 
 .subredditName {
   float: left;
-  width: 70%;
+  width: 85%;
 }
 
 .removeButtonm {
   float: left;
-  width: 30%;
+  width: 15%;
+}
+
+.browsing {
+  color: skyblue;
 }

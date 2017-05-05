@@ -16,7 +16,9 @@ class AlterSubReddit extends React.Component {
     clickToAdd: React.PropTypes.func.isRequired,
     sameWarning: React.PropTypes.bool.isRequired,
     sortByUps: React.PropTypes.func.isRequired,
-    buttonText: React.PropTypes.string.isRequired
+    sortByAuthor: React.PropTypes.func.isRequired,
+    upsSortButtonText: React.PropTypes.string.isRequired,
+    authorSortButtonText: React.PropTypes.string.isRequired
   }
 
   renderContent() {
@@ -28,6 +30,7 @@ class AlterSubReddit extends React.Component {
           <div>
             <form onSubmit={this.props.onSubmit}>
               <input
+                className='form-control'
                 placeholder='Change Subreddit...'
                 onChange={this.props.onChange}
                 value={this.props.inputValue}
@@ -47,10 +50,16 @@ class AlterSubReddit extends React.Component {
           Add to Favorites
         </button>
         <button
-          className='btn btn-success'
+          className='btn btn-primary'
           onClick={this.props.sortByUps}
         >
-          {this.props.buttonText}
+          {this.props.upsSortButtonText}
+        </button>
+        <button
+          className='btn btn-primary'
+          onClick={this.props.sortByAuthor}
+        >
+          {this.props.authorSortButtonText}
         </button>
       </div>
     );

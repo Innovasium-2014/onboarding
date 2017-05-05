@@ -23,7 +23,8 @@ class App extends React.Component {
       subreddit: 'UWaterloo',
       sameWarning: false,
       sort: 0,
-      buttonText: 'Sort (Ascending)',
+      upsSortButtonText: 'Upvotes - Ascending',
+      authorSortButtonText: 'Author - Ascending',
       feeds: Immutable.fromJS({})
     };
   }
@@ -113,12 +114,12 @@ class App extends React.Component {
   }
 
   sortByUps() {
-    const favorites = this.state.feeds;
+    const feed = this.state.feeds;
     let sortedState;
     let newSortState;
     let newButtonText;
     if (this.state.sort > 0) {
-      sortedState = favorites.sort((a, b) => {
+      sortedState = feed.sort((a, b) => {
         const first = a.getIn(['data', 'ups']);
         const second = b.getIn(['data', 'ups']);
         if (first < second) { return -1; }
@@ -126,13 +127,13 @@ class App extends React.Component {
         if (first === second) { return 0; }
       });
       newSortState = -1;
-      newButtonText = 'Default';
+      newButtonText = 'Upvotes - Default';
     } else if (this.state.sort < 0) {
       sortedState = this.props.reddits.get('feed').get('children');
       newSortState = 0;
-      newButtonText = 'Sort (Ascending)';
+      newButtonText = 'Upvotes - Ascending';
     } else {
-      sortedState = favorites.sort((a, b) => {
+      sortedState = feed.sort((a, b) => {
         const first = a.getIn(['data', 'ups']);
         const second = b.getIn(['data', 'ups']);
         if (first < second) { return 1; }
@@ -140,12 +141,49 @@ class App extends React.Component {
         if (first === second) { return 0; }
       });
       newSortState = 1;
-      newButtonText = 'Sort (Descending)';
+      newButtonText = 'Upvotes - (Descending)';
     }
     this.setState({
       feeds: sortedState,
       sort: newSortState,
-      buttonText: newButtonText
+      upsSortButtonText: newButtonText
+    });
+  }
+
+  sortByAuthor() {
+    const feed = this.state.feeds;
+    let sortedState;
+    let newSortState;
+    let newButtonText;
+    if (this.state.sort > 0) {
+      sortedState = feed.sort((a, b) => {
+        const first = a.getIn(['data', 'author']).charAt(0).toLowerCase();
+        const second = b.getIn(['data', 'author']).charAt(0).toLowerCase();
+        if (first < second) { return 1; }
+        if (first > second) { return -1; }
+        if (first === second) { return 0; }
+      });
+      newSortState = -1;
+      newButtonText = 'Author - Default';
+    } else if (this.state.sort < 0) {
+      sortedState = this.props.reddits.get('feed').get('children');
+      newSortState = 0;
+      newButtonText = 'Author - Ascending';
+    } else {
+      sortedState = feed.sort((a, b) => {
+        const first = a.getIn(['data', 'author']).charAt(0).toLowerCase();
+        const second = b.getIn(['data', 'author']).charAt(0).toLowerCase();
+        if (first < second) { return -1; }
+        if (first > second) { return 1; }
+        if (first === second) { return 0; }
+      });
+      newSortState = 1;
+      newButtonText = 'Author - Descending';
+    }
+    this.setState({
+      feeds: sortedState,
+      sort: newSortState,
+      authorSortButtonText: newButtonText
     });
   }
 
@@ -158,20 +196,28 @@ class App extends React.Component {
         <div key={i}>
           <div className='favoritesCard'>
             <div className='subredditName'>
-              <a
-                href='javascript:void(0)'
-                className='dullLink'
-                onClick={() => this.loadFavorite(favoriteName)}
-              >
-                {favoriteName}
-              </a>
+
+              {!(this.state.subreddit === favoriteName) && 
+                <a
+                  href='javascript:void(0)'
+                  className='dullLink'
+                  onClick={() => this.loadFavorite(favoriteName)}
+                >
+                  {favoriteName}
+                </a>
+              }
+              {(this.state.subreddit === favoriteName) &&
+                <p className='browsing'>
+                  {favoriteName}
+                </p>
+              }
             </div>
             <div className='removeButton'>
               <button
                 className='btn btn-danger'
                 onClick={() => this.clickToRemove(favoriteId)}
               >
-                Remove
+                X
               </button>
             </div>
           </div>
@@ -244,7 +290,9 @@ class App extends React.Component {
           subreddit={this.state.subreddit}
           sameWarning={this.state.sameWarning}
           sortByUps={() => this.sortByUps()}
-          buttonText={this.state.buttonText}
+          sortByAuthor={() => this.sortByAuthor()}
+          upsSortButtonText={this.state.upsSortButtonText}
+          authorSortButtonText={this.state.authorSortButtonText}
         />
         <div className="display">
           <RedditFeed
