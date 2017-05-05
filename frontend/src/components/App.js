@@ -122,9 +122,7 @@ class App extends React.Component {
       sortedState = feed.sort((a, b) => {
         const first = a.getIn(['data', 'ups']);
         const second = b.getIn(['data', 'ups']);
-        if (first < second) { return -1; }
-        if (first > second) { return 1; }
-        if (first === second) { return 0; }
+        return second.localeCompare(first);
       });
       newSortState = -1;
       newButtonText = 'Upvotes - Default';
@@ -136,9 +134,7 @@ class App extends React.Component {
       sortedState = feed.sort((a, b) => {
         const first = a.getIn(['data', 'ups']);
         const second = b.getIn(['data', 'ups']);
-        if (first < second) { return 1; }
-        if (first > second) { return -1; }
-        if (first === second) { return 0; }
+        return first.localeCompare(second);
       });
       newSortState = 1;
       newButtonText = 'Upvotes - (Descending)';
@@ -157,11 +153,9 @@ class App extends React.Component {
     let newButtonText;
     if (this.state.sort > 0) {
       sortedState = feed.sort((a, b) => {
-        const first = a.getIn(['data', 'author']).charAt(0).toLowerCase();
-        const second = b.getIn(['data', 'author']).charAt(0).toLowerCase();
-        if (first < second) { return 1; }
-        if (first > second) { return -1; }
-        if (first === second) { return 0; }
+        const first = a.getIn(['data', 'author']);
+        const second = b.getIn(['data', 'author']);
+        return second.localeCompare(first);
       });
       newSortState = -1;
       newButtonText = 'Author - Default';
@@ -171,11 +165,9 @@ class App extends React.Component {
       newButtonText = 'Author - Ascending';
     } else {
       sortedState = feed.sort((a, b) => {
-        const first = a.getIn(['data', 'author']).charAt(0).toLowerCase();
-        const second = b.getIn(['data', 'author']).charAt(0).toLowerCase();
-        if (first < second) { return -1; }
-        if (first > second) { return 1; }
-        if (first === second) { return 0; }
+        const first = a.getIn(['data', 'author']);
+        const second = b.getIn(['data', 'author']);
+        return first.localeCompare(second);
       });
       newSortState = 1;
       newButtonText = 'Author - Descending';
