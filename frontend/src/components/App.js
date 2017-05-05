@@ -18,13 +18,17 @@ class App extends React.Component {
     super();
     this.state = {
       inputValue: '',
+      filterInputValue: '',
       inputError: '',
       subreddit: 'uwaterloo',
       sameWarning: false,
       sort: 0,
       upsSortButtonText: 'Upvotes - Ascending',
       authorSortButtonText: 'Author - Ascending',
-      feeds: Immutable.fromJS({})
+      feeds: Immutable.fromJS({}),
+      filterList: Immutable.fromJS({}),
+      favorites: Immutable.fromJS({}),
+      filterFavorites: Immutable.fromJS({})
     };
   }
 
@@ -43,7 +47,14 @@ class App extends React.Component {
     if (nextProps.reddits.get('feed').get('children')) {
       this.setState({
         feeds: nextProps.reddits.get('feed').get('children'),
+        filterList: nextProps.reddits.get('feed').get('children'),
         subreddit: nextProps.reddits.getIn(['feed', 'children', 0, 'data', 'subreddit'])
+      });
+    }
+    if (nextProps.reddits.get('favorites')) {
+      this.setState({
+        favorites: nextProps.reddits.get('favorites'),
+        filterFavorites: nextProps.reddits.get('favorites')
       });
     }
   }
@@ -184,7 +195,7 @@ class App extends React.Component {
   }
 
   favoriteList() {
-    const posts = (this.props.reddits && this.props.reddits.get('favorites')) || [];
+    const posts = this.state.favorites || [];
     return posts.map((post, i) => {
       const favoriteName = post.get('name');
       const favoriteId = post.get('id');
@@ -253,24 +264,21 @@ class App extends React.Component {
     });
   }
 
-    // renderNames() {
-    //   return this.props.students.map((student) => {
-    //     const studentId = student.get('id');
-    //     return (
-    //       <div key={studentId}>
-    //         <Name
-    //           name={student.get('name')}
-    //           studentId={studentId}
-    //           deleteHandler={this.deleteHandler}
-    //         />
-    //       </div>
-    //     );
-    //   });
-    // }
-
   handleInputChange(e) {
     this.setState({
       inputValue: e.target.value
+    });
+  }
+
+  handleFilter(e) {
+    this.setState({
+      filterInputValue: e.target.value,
+      feeds: this.state.filterList.filter((curr) => {
+        return curr.getIn(['data', 'title']).toLowerCase().includes(e.target.value.toLowerCase());
+      }),
+      favorites: this.state.filterFavorites.filter((curr) => {
+        return curr.get('name').toLowerCase().includes(e.target.value.toLowerCase());
+      })
     });
   }
 
@@ -289,6 +297,7 @@ class App extends React.Component {
           sortByAuthor={() => this.sortByAuthor()}
           upsSortButtonText={this.state.upsSortButtonText}
           authorSortButtonText={this.state.authorSortButtonText}
+          handleFilter={(e) => this.handleFilter(e)}
         />
         <div className="display">
           <RedditFeed

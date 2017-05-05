@@ -18,7 +18,8 @@ class AlterSubReddit extends React.Component {
     sortByUps: React.PropTypes.func.isRequired,
     sortByAuthor: React.PropTypes.func.isRequired,
     upsSortButtonText: React.PropTypes.string.isRequired,
-    authorSortButtonText: React.PropTypes.string.isRequired
+    authorSortButtonText: React.PropTypes.string.isRequired,
+    handleFilter: React.PropTypes.func.isRequired
   }
 
   renderContent() {
@@ -61,6 +62,7 @@ class AlterSubReddit extends React.Component {
         >
           {this.props.authorSortButtonText}
         </button>
+        <input type='text' placeholder='Search this Subreddit...' onChange={(e) => this.props.handleFilter(e)} />
       </div>
     );
   }
