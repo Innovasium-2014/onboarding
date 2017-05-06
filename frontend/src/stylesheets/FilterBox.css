@@ -1,0 +1,22 @@
+.form input {
+    height:20px;
+    width:220px;
+    list-style-type: none;
+}
+
+
+
+.results {
+    float: left;
+    background-color: #999;
+}
+
+
+.results .item {
+    margin-left: 0;
+    padding: 3px;
+    font-family: Helvetica;
+    border: 1px solid #666;
+    list-style-type: none;
+    color: #fff;
+  }

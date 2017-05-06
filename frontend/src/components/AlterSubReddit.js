@@ -16,13 +16,15 @@ class AlterSubReddit extends React.Component {
     clickToAdd: React.PropTypes.func.isRequired,
     sameWarning: React.PropTypes.bool.isRequired,
     sortByUps: React.PropTypes.func.isRequired,
-    buttonText: React.PropTypes.string.isRequired
+    buttonText: React.PropTypes.string.isRequired,
+    buttonTextA: React.PropTypes.string.isRequired
   }
 
   renderContent() {
     const url = 'http://www.reddit.com/r/' + this.props.subreddit;
     return (
       <div>
+      <center>
         <a href={url}><h2>{this.props.subreddit}</h2></a>
         <div>
           <div>
@@ -42,16 +44,29 @@ class AlterSubReddit extends React.Component {
         </div>
         <button
           className='btn btn-success'
+          style={{width: 170 + 'px'}}
           onClick={this.props.clickToAdd}
         >
           Add to Favorites
         </button>
+        <br />
         <button
-          className='btn btn-success'
+          className='btn btn-primary'
+          style={{width: 170 + 'px'}}
           onClick={this.props.sortByUps}
         >
           {this.props.buttonText}
         </button>
+        <br />
+        <button
+          className='btn btn-info'
+          style={{width: 170 + 'px'}}
+          onClick={this.props.sortByAuthor}
+        >
+          {this.props.buttonTextA}
+        </button>
+        <br />
+        </center>
       </div>
     );
   }

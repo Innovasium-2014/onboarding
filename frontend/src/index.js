@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 
 import rootReducer from './reducers';
 
-import App from './components/App';
+import Uni from './components/Uni';
 
 const logger = createLogger();
 
@@ -19,6 +19,6 @@ const store = createStore(rootReducer, {}, compose(
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Uni />
   </Provider>, document.getElementById('App')
 );

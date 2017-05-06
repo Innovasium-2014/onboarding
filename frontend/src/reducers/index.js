@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
-import students from './Students';
-import reddits from './Reddits';
+import unis from './Unis';
 
 export default combineReducers({
-  students,
-  reddits
+  unis
 });
