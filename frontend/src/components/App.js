@@ -17,12 +17,8 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      inputValue: '',
-      filterInputValue: '',
-      inputError: '',
-      subreddit: 'uwaterloo',
-      sameWarning: false,
       sort: 0,
+      subreddit: 'uwaterloo',
       upsSortButtonText: 'Upvotes - Ascending',
       authorSortButtonText: 'Author - Ascending',
       feeds: Immutable.fromJS({}),
@@ -59,65 +55,6 @@ class App extends React.Component {
     }
   }
 
-  addHandler(e) {
-    e.preventDefault();
-    const { inputValue } = this.state;
-    if (!inputValue) {
-      this.setState({
-        inputError: ''
-      });
-      return false;
-    }
-    this.props.addStudent(inputValue);
-    this.setState({
-      inputValue: '',
-      inputError: ''
-    });
-    return false;
-  }
-
-  changeSubReddit(e) {
-    e.preventDefault();
-    const { inputValue } = this.state;
-    const url = 'http://www.reddit.com/r/' + inputValue + '.json';
-    if (inputValue) {
-      this.props.getFeed(url);
-    }
-    this.setState({
-      inputValue: '',
-      subreddit: this.state.feeds.getIn([1, 'data', 'subreddit'])
-    });
-  }
-
-  loadFavorite(name) {
-    const url = 'http://www.reddit.com/r/' + name + '.json';
-    this.props.getFeed(url);
-    this.setState({
-      subreddit: name
-    });
-  }
-
-  clickToAdd() {
-    const favorites = this.props.reddits.get('favorites');
-    var result = favorites.find((favorite) => {
-      return favorite.get('name') === this.state.subreddit;
-    });
-    if (result) {
-      this.setState({
-        sameWarning: true
-      });
-    } else {
-      this.setState({
-        sameWarning: false
-      });
-      this.props.createFavorite(this.state.subreddit);
-    }
-  }
-
-  clickToRemove(id) {
-    this.props.removeFavorite(id);
-  }
-
   getHandler() {
     const url = 'http://www.reddit.com/r/' + this.state.subreddit + '.json';
     this.props.getFeed(url);
@@ -152,7 +89,7 @@ class App extends React.Component {
         if (first === second) { return 0; }
       });
       newSortState = 1;
-      newButtonText = 'Upvotes - (Descending)';
+      newButtonText = 'Upvotes - Descending';
     }
     this.setState({
       feeds: sortedState,
@@ -194,79 +131,10 @@ class App extends React.Component {
     });
   }
 
-  favoriteList() {
-    const posts = this.state.favorites || [];
-    return posts.map((post, i) => {
-      const favoriteName = post.get('name');
-      const favoriteId = post.get('id');
-      return (
-        <div key={i}>
-          <div className='favoritesCard'>
-            <div className='subredditName'>
-
-              {!(this.state.subreddit === favoriteName) &&
-                <a
-                  href='javascript:void(0)'
-                  className='dullLink'
-                  onClick={() => this.loadFavorite(favoriteName)}
-                >
-                  {favoriteName}
-                </a>
-              }
-              {(this.state.subreddit === favoriteName) &&
-                <p className='browsing'>
-                  {favoriteName}
-                </p>
-              }
-            </div>
-            <div className='removeButton'>
-              <button
-                className='btn btn-danger'
-                onClick={() => this.clickToRemove(favoriteId)}
-              >
-                X
-              </button>
-            </div>
-          </div>
-        </div>
-      );
-    });
-  }
-
-  postList() {
-    const posts = (this.state.feeds && this.state.feeds) || [];
-    return posts.map((post, i) => {
-      const postUps = post.getIn(['data', 'ups']);
-      const postUrl = post.getIn(['data', 'url']);
-      const postTitle = post.getIn(['data', 'title']);
-      const postThumb = post.getIn(['data', 'thumbnail']).includes('jpg') ? post.getIn(['data', 'thumbnail']) : 'https://lh3.googleusercontent.com/J41hsV2swVteoeB8pDhqbQR3H83NrEBFv2q_kYdq1xp9vsI1Gz9A9pzjcwX_JrZpPGsa=w300';
-      const postAuthor = post.getIn(['data', 'author']);
-      const authorLink = 'http://www.reddit.com/user/' + postAuthor;
-      return (
-        <div key={i}>
-          <div className='subredditCard'>
-            <div className='ups'>
-              {postUps}
-            </div>
-            <div className='thumbnailDiv'>
-              <img src={postThumb} alt='thumbnail' className='thumbnailImage' />
-            </div>
-            <div className='title'>
-              <a href={postUrl}>{postTitle}</a>
-            </div>
-            <div className='author'>
-              <h6>Submitted by:</h6>
-              <a href={authorLink}>{postAuthor}</a>
-            </div>
-          </div>
-        </div>
-      );
-    });
-  }
-
-  handleInputChange(e) {
+  changeSubReddit(url) {
+    this.props.getFeed(url);
     this.setState({
-      inputValue: e.target.value
+      subreddit: this.state.feeds.getIn([1, 'data', 'subreddit'])
     });
   }
 
@@ -283,29 +151,38 @@ class App extends React.Component {
   }
 
   render() {
+    const values = {
+      feeds: this.state.feeds,
+      reddits: this.props.reddits,
+      subreddit: this.state.subreddit,
+      upsSortButtonText: this.state.upsSortButtonText,
+      authorSortButtonText: this.state.authorSortButtonText,
+      favorites: this.state.favorites
+    };
+    const helpers = {
+      changeSubReddit: (e) => this.changeSubReddit(e),
+      clickToAdd: () => this.clickToAdd(),
+      createFavorite: (e) => this.props.createFavorite(e),
+      sortByUps: () => this.sortByUps(),
+      sortByAuthor: () => this.sortByAuthor(),
+      handleFilter: (e) => this.handleFilter(e)
+    };
     return (
       <div>
         <AlterSubReddit
-          inputValue={this.state.inputValue}
-          onChange={(e) => this.handleInputChange(e)}
-          onSubmit={(e) => this.changeSubReddit(e)}
-          clickToAdd={() => this.clickToAdd()}
-          createFavorite={(e) => this.props.createFavorite(e)}
-          subreddit={this.state.subreddit}
-          sameWarning={this.state.sameWarning}
-          sortByUps={() => this.sortByUps()}
-          sortByAuthor={() => this.sortByAuthor()}
-          upsSortButtonText={this.state.upsSortButtonText}
-          authorSortButtonText={this.state.authorSortButtonText}
-          handleFilter={(e) => this.handleFilter(e)}
+          values={values}
+          helpers={helpers}
         />
         <div className="display">
           <RedditFeed
             getHandler={() => this.getHandler()}
-            postList={() => this.postList()}
+            posts={this.state.feeds}
           />
           <FavoritesList
-            favoriteList={() => this.favoriteList()}
+            favorites={this.state.favorites}
+            subreddit={this.state.subreddit}
+            changeSubReddit={(e) => this.changeSubReddit(e)}
+            removeFavorite={(e) => this.props.removeFavorite(e)}
           />
         </div>
       </div>

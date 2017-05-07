@@ -5,40 +5,75 @@ class AlterSubReddit extends React.Component {
   constructor() {
     super();
     this.state = {
+      inputValue: '',
+      sameWarning: false
     };
   }
 
   static propTypes = {
-    subreddit: React.PropTypes.string.isRequired,
-    inputValue: React.PropTypes.string,
-    onChange: React.PropTypes.func.isRequired,
-    onSubmit: React.PropTypes.func.isRequired,
-    clickToAdd: React.PropTypes.func.isRequired,
-    sameWarning: React.PropTypes.bool.isRequired,
-    sortByUps: React.PropTypes.func.isRequired,
-    sortByAuthor: React.PropTypes.func.isRequired,
-    upsSortButtonText: React.PropTypes.string.isRequired,
-    authorSortButtonText: React.PropTypes.string.isRequired,
-    handleFilter: React.PropTypes.func.isRequired
+    helpers: React.PropTypes.object.isRequired,
+    values: React.PropTypes.object.isRequired
+  }
+
+  handleInputChange(e) {
+    this.setState({
+      inputValue: e.target.value
+    });
+  }
+
+  changeSubReddit(e) {
+    e.preventDefault();
+    const { inputValue } = this.state;
+    const url = 'http://www.reddit.com/r/' + inputValue + '.json';
+    if (inputValue) {
+      this.props.helpers.changeSubReddit(url);
+      this.setState({
+        inputValue: ''
+      });
+    }
+  }
+
+  clickToAdd() {
+    const { favorites, subreddit } = this.props.values;
+    var result = favorites.find((favorite) => {
+      return favorite.get('name') === subreddit;
+    });
+    if (result) {
+      this.setState({
+        sameWarning: true
+      });
+    } else {
+      this.setState({
+        sameWarning: false
+      });
+      this.props.helpers.createFavorite(subreddit);
+    }
   }
 
   renderContent() {
-    const url = 'http://www.reddit.com/r/' + this.props.subreddit;
+    const {
+      subreddit,
+      sameWarning,
+      upsSortButtonText,
+      authorSortButtonText
+    } = this.props.values;
+    const { sortByUps, sortByAuthor, handleFilter } = this.props.helpers;
+    const url = 'http://www.reddit.com/r/' + subreddit;
     return (
       <div>
-        <a href={url}><h2>{this.props.subreddit}</h2></a>
+        <a href={url}><h2>{subreddit}</h2></a>
         <div>
           <div>
-            <form onSubmit={this.props.onSubmit}>
+            <form onSubmit={(e) => this.changeSubReddit(e)}>
               <input
                 className='form-control'
                 placeholder='Change Subreddit...'
-                onChange={this.props.onChange}
-                value={this.props.inputValue}
+                onChange={(e) => this.handleInputChange(e)}
+                value={this.state.inputValue}
               />
             </form>
           </div>
-          {(this.props.sameWarning) &&
+          {(sameWarning) &&
             <div>
               <h6>You have already favorited this subreddit</h6>
             </div>
@@ -46,23 +81,27 @@ class AlterSubReddit extends React.Component {
         </div>
         <button
           className='btn btn-success'
-          onClick={this.props.clickToAdd}
+          onClick={() => this.clickToAdd()}
         >
           Add to Favorites
         </button>
         <button
           className='btn btn-primary'
-          onClick={this.props.sortByUps}
+          onClick={sortByUps}
         >
-          {this.props.upsSortButtonText}
+          {upsSortButtonText}
         </button>
         <button
           className='btn btn-primary'
-          onClick={this.props.sortByAuthor}
+          onClick={sortByAuthor}
         >
-          {this.props.authorSortButtonText}
+          {authorSortButtonText}
         </button>
-        <input type='text' placeholder='Search this Subreddit...' onChange={(e) => this.props.handleFilter(e)} />
+        <input
+          type='text'
+          placeholder='Search this Subreddit...'
+          onChange={(e) => handleFilter(e)}
+        />
       </div>
     );
   }
