@@ -10,6 +10,8 @@
 
 - Jacob Steves
 
+- Brant Vanderveen
+
 ## Co-op Student Alumni
 
 - Tom Nies
