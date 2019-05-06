@@ -204,5 +204,4 @@ You will also see any lint errors in the console.
 - Keren Chandran
 - Jacob Steves
 - Brant Vanderveen
-
 - Shounak Datta
