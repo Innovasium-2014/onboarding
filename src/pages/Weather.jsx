@@ -2,7 +2,6 @@ import React from 'react';
 
 import WeatherStrip from '../components/WeatherStrip';
 
-// here is the class version of this component with no logic
-const Home = () => <WeatherStrip />;
+const WeatherStripPage = () => <WeatherStrip />;
 
-export default Home;
+export default WeatherStripPage;
