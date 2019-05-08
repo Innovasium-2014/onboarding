@@ -3,8 +3,6 @@ import './SocialCard.css';
 import Card from './Card'
 
 const SocialCard = () => {
-  const [editMode, setEditMode] = React.useState(false)
-
   return (
     <div>
       <Card 
