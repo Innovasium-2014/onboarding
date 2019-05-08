@@ -2,12 +2,12 @@ import React from 'react';
 import { TextField, Button } from '@material-ui/core';
 import './NameForm.css';
 
-const NameForm = (props) => {
+const NameForm = ({onClick}) => {
 
   const [name, setName] = React.useState('');
 
   const handleChange = event => setName(event.target.value);
-  const onClick = event => props.onClick(name);
+  const addName = event => onClick(name);
 
   return (
     <div>
@@ -17,7 +17,7 @@ const NameForm = (props) => {
           className="form-control"
           placeholder="Enter a student's name here"
         />
-        <Button onClick={onClick}>Add Name</Button>
+        <Button onClick={addName}>Add Name</Button>
       </div>
     </div>
   );

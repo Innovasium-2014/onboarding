@@ -5,17 +5,14 @@ const Calculator = () => {
   const [value, setValue] = React.useState('0')
   const [storedVals, setStoredVals] = React.useState([])
   const [storedOp, setStoredOp] = React.useState([])
+  const [fullEq, setFullEq] =React.useState('')
   const [display, setDisplay] = React.useState('0')
 
   const clickNum = (number) => {
     let str = ''
-    console.log(value)
-    value === '0'?
-    str = number
-    : str = value.concat(number)
+    value === '0'? str = number: str = value.concat(number)
     setValue(str)
     setDisplay(str)
-    console.log(str)
   }
 
   const clearNum = () => {
@@ -23,142 +20,140 @@ const Calculator = () => {
     setDisplay('0')
     setStoredOp([])
     setStoredVals([])
+    setFullEq('')
   }
 
   const add = () => {
-     let arr1 = storedVals
-     let arr2 = storedOp
+     const arr1 = [...storedVals]
+     const arr2 = [...storedOp]
+     let eq = fullEq
      arr1.push(parseInt(value))
      setStoredVals(arr1)
      arr2.push('+')
      setStoredOp(arr2)
+     eq = eq.concat(value + '+')
+     setFullEq(eq)
      setValue('0')
      setDisplay('0')
   }
 
   const subtract = () => {
-     let arr1 = storedVals
-     let arr2 = storedOp
+     const arr1 = [...storedVals]
+     const arr2 = [...storedOp]
+     let eq = fullEq
      arr1.push(parseInt(value))
      setStoredVals(arr1)
      arr2.push('-')
      setStoredOp(arr2)
+     eq = eq.concat(value + '-')
+     setFullEq(eq)
      setValue('0')
      setDisplay('0')
   }
 
   const multiply = () => {
-     let arr1 = storedVals
-     let arr2 = storedOp
+     const arr1 = [...storedVals]
+     const arr2 = [...storedOp]
+     let eq = fullEq
      arr1.push(parseInt(value))
      setStoredVals(arr1)
      arr2.push('x')
      setStoredOp(arr2)
+     eq = eq.concat(value + 'x')
+     setFullEq(eq)
      setValue('0')
      setDisplay('0')
   }
 
   const equals = () => {
-    let arr1 = storedVals
+    const arr1 = [...storedVals]
     arr1.push(parseInt(value))
     setStoredVals(arr1)
 
-    let numArray = storedVals
-    let numOps = storedOp
+    let numArray = [...arr1]
+    let numOps = [...storedOp]
 
-    numOps.map((operation, index) => (
-      operation === '+'?
-      numArray[index + 1] = numArray[index] + numArray[index + 1]
-      : operation === '-'?
-      numArray[index + 1] = numArray[index] - numArray[index + 1]
-      : operation === 'x'?
-      numArray[index + 1] = numArray[index] * numArray[index + 1]
-      : console.log("Error")
-    ))
+    numOps.map((operation, index) => {
+      if (operation === '+'){
+        return numArray[index + 1] = numArray[index] + numArray[index + 1]
+      }
+      else if (operation === '-') {
+        return numArray[index + 1] = numArray[index] - numArray[index + 1]
+      }
+      else if (operation === 'x'){
+        return numArray[index + 1] = numArray[index] * numArray[index + 1]
+      }
+      else {
+        return 0
+      }
+    })
     setDisplay(numArray[numArray.length - 1])
     setValue(numArray[numArray.length - 1])
+    setFullEq('')
     setStoredVals([])
     setStoredOp([])
+
   }
 
   return (
-  <div className="calculator">
-    <div>
-      <div className="numberBar">
-        <NumberBar display={display}/>
+  <div className='outline'>
+    <h1 className="title"> Calculator </h1>
+    <div className="calculator">
+      <div>
+        <div className="numberBar">
+          <NumberBar display={display}/>
+        </div>
       </div>
-    </div>
-    <div>
-      <div className="clearArea left">
-        <ClearButt onClick={clearNum}/>
+      <div>
+        <div className="clearArea left">
+          <Button onClick={() => clearNum()} display="Clear" className="clearButt"/>
+        </div>
+        <div className="operations left">
+          <Button onClick={() => multiply()} display="x" className="operation"/>
+        </div>
       </div>
-      <div className="operations left">
-        <Operation onClick={multiply} str="x" />
-      </div>
-    </div>
-    <div>
-      <div className="left">
-        <Number onClick={clickNum} number="7"/>
-        <Number onClick={clickNum} number="4"/>
-        <Number onClick={clickNum} number="1"/>
-      </div>
-      <div className="left middle-col">
-        <Number onClick={clickNum} number="8"/>
-        <Number onClick={clickNum} number="5"/>
-        <Number onClick={clickNum} number="2"/>
-      </div>
-      <div className="left">
-        <Number onClick={clickNum} number="9"/>
-        <Number onClick={clickNum} number="6"/>
-        <Number onClick={clickNum} number="3"/>
-      </div>
-      <div className="operations left">
-        <Operation onClick={subtract} str="-" />
-        <Operation onClick={add} str="+" />
-        <Operation onClick={equals} str="=" />
+      <div>
+        <div className="left">
+          <Button onClick={() => clickNum("7")} display="7" className="number"/>
+          <Button onClick={() => clickNum("4")} display="4" className="number"/>
+          <Button onClick={() => clickNum("1")} display="1" className="number"/>
+        </div>
+        <div className="left middle-col">
+          <Button onClick={() => clickNum("8")} display="8" className="number"/>
+          <Button onClick={() => clickNum("5")} display="5" className="number"/>
+          <Button onClick={() => clickNum("2")} display="2" className="number"/>
+        </div>
+        <div className="left">
+          <Button onClick={() => clickNum("9")} display="9" className="number"/>
+          <Button onClick={() => clickNum("6")} display="6" className="number"/>
+          <Button onClick={() => clickNum("3")} display="3" className="number"/>
+        </div>
+        <div className="operations left">
+          <Button onClick={() => subtract()} display="-" className="operation"/>
+          <Button onClick={() => add()} display="+" className="operation"/>
+          <Button onClick={() => equals()} fullEq={fullEq} display="=" value={value} className="operation tooltip"/>
+        </div>
       </div>
     </div>
   </div>
   )
 };
 
-const NumberBar = (props) => {
+const Button = ({onClick, className, display, fullEq, value}) => {
+  return (
+    <div onClick={() => onClick()} className={className}>
+      {className === 'operation tooltip' && <span className="tooltiptext">{fullEq + value}</span>}
+      {display}
+    </div>
+  )
+}
 
+const NumberBar = ({display}) => {
   return (
     <div>
-      {props.display}
+      {display}
     </div>
   )
 }
-
-const Number = (props) => {
-  const number = props.number
-
-  return (
-    <div onClick={() => props.onClick(props.number)}  className="number">
-    {number}
-    </div>
-  )
-}
-
-const Operation = (props) => {
-  const opStr = props.str
-
-  return (
-    <div onClick={props.onClick} className="operation">
-    {opStr}
-    </div>
-  )
-}
-
-const ClearButt = (props) => {
-  return (
-    <div onClick={props.onClick} className="clearButt">
-    CLEAR
-    </div>
-  )
-}
-
-
 
 export default Calculator;
