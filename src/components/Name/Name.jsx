@@ -15,7 +15,7 @@ const styles = {
   }
 }
 
-const Name = ({ classes, studentName }) => (
+const Name = ({ classes, studentName, deleteFunc }) => (
   <Card className={classes.card}>
     <CardContent>
       <Typography component="p">
@@ -23,7 +23,7 @@ const Name = ({ classes, studentName }) => (
       </Typography>
     </CardContent>
     <CardActions>
-      <Button size="small">Delete</Button>
+      <Button onClick={deleteFunc} size="small">Delete</Button>
     </CardActions>
   </Card>
 );

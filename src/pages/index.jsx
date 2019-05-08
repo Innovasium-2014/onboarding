@@ -6,14 +6,39 @@ import StudentNames from '../constants/StudentNames';
 
 // here is the class version of this component with no logic
 class Home extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      studentNames: StudentNames
+    };
+  }
+
+  addName = (newName) => {
+    this.setState ({
+      studentNames: this.state.studentNames.concat(newName)
+    })
+    console.log(this.state.studentNames);
+  }
+
+  deletFunc = (nameIndex) => {
+    console.log(nameIndex)
+    let {studentNames} = this.state
+    console.log(studentNames)
+    studentNames.splice(nameIndex, 1)
+    this.setState ({
+      studentNames
+    })
+    console.log(this.state.studentNames)
+  }
+
   render() {
     return (
       <React.Fragment>
-        <NameForm />
+        <NameForm onClick={this.addName}/>
         <div style={{ display: 'flex' }}>
-          {StudentNames.map((name, nameIndex) => (
+          {this.state.studentNames.map((name, nameIndex) => (
             <div style={{ padding: 16 }} key={`student-name-${nameIndex}`}>
-              <Name studentName={name} />
+              <Name studentName={name} deleteFunc={() => this.deletFunc(nameIndex)}/>
             </div>
           ))}
         </div>

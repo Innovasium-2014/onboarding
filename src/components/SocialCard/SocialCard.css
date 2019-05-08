@@ -1,0 +1,81 @@
+.profileBar {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.cardFull{
+  text-align: center;
+  height: 600px;
+  width: 650px;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+
+.left{
+  float: left;
+}
+
+.right{
+  float: right;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 20px;
+  padding: 3px;
+}
+
+.tag {
+  padding: 3px;
+  font-size: 19px;
+  color: grey;
+  font-weight: normal;
+}
+
+.date {
+  padding: 3px;
+  font-size: 19px;
+  color: grey;
+}
+
+.profileBody{
+  text-align: center;
+  width: 680px;
+}
+
+.image{
+  margin: 0 auto;
+}
+
+.postText {
+  font-weight: normal;
+  color: black;
+  font-size: 20px;
+  padding: 3px;
+  vertical-align: top;
+}
+
+.iconDisabled {
+  height: 30px;
+  width: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  pointer-events: none;
+  filter: brightness(50%);
+}
+
+.icon {
+  height: 30px;
+  width: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.icon:hover {
+  filter: brightness(75%);
+}
+.iconVal {
+  font-size: 15px;
+  padding-left: 40px;
+  padding-right: 38px;
+}

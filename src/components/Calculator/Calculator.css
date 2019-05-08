@@ -1,0 +1,79 @@
+.calculator{
+  width: 248px;
+  height: 310px;
+  margin: 0 auto;
+  border: 1px solid black;
+}
+
+.numberBar {
+  width: 226px;
+  height: 40px;
+  border: 1px solid black;
+  font-size: 20px;
+  padding: 10px;
+  text-align: right
+}
+.clearButt {
+  border: 1px solid black;
+  font-size: 20px;
+  padding: 10px;
+  width: 164px;
+  height: 40px;
+  text-align: center;
+  background-color: lightblue;
+}
+
+.clearButt:hover {
+  background-color: dodgerblue;
+}
+
+.clearButt:active {
+  background-color: darkblue;
+}
+
+.operation {
+  border: 1px solid black;
+  font-size: 20px;
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  color: white;
+  background-color: red;
+}
+
+.operation:hover {
+  background-color: crimson;
+}
+
+.operation:active {
+  background-color: darkred;
+}
+
+.number {
+  border: 1px solid black;
+  font-size: 20px;
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+}
+.number:hover {
+  background-color: lightgray;
+}
+
+.number:active {
+  background-color: darkgrey;
+}
+
+.left{
+  float: left;
+}
+
+.right{
+  float: right;
+}
+
+.middle{
+  float: middle;
+}
