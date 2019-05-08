@@ -2,7 +2,6 @@ import React from 'react';
 import './SocialCard.css';
 import Button from './Button'
 
-
 class Card extends React.Component {
   constructor(props) {
     super(props)
@@ -23,7 +22,6 @@ class Card extends React.Component {
   }
 
   clickComment(toggle) {
-    console.log(toggle)
     this.setState({
       comments: parseInt(this.state.comments) + (toggle ? 1 : -1)
     })

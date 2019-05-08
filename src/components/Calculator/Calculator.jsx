@@ -21,7 +21,6 @@ const Calculator = () => {
       setMemoryText(screenText)
       setScreenText('')
     }
-
     else if (value === '=') {
       if (screenText) {
         setScreenText('');
@@ -39,15 +38,12 @@ const Calculator = () => {
           setScreenText(parseFloat(screenText) * parseFloat(memoryText))
         }
       }
-        
       setMemoryText('')
       setOperator('')
     }
-
     else {
       setScreenText(screenText + value)
     }
-    
   }
 
   return (

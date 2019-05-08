@@ -5,15 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 class WeatherCard extends React.Component {
   constructor(props) {
     super(props)
-
-    this.weekday = new Array(7);
-    this.weekday[0] = "Monday";
-    this.weekday[1] = "Tuesday";
-    this.weekday[2] = "Wednesday";
-    this.weekday[3] = "Thursday";
-    this.weekday[4] = "Friday";
-    this.weekday[5] = "Saturday";
-    this.weekday[6] = "Sunday";
+    this.weekday = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" ];
   }
 
   convertCelsius(celsius) {
