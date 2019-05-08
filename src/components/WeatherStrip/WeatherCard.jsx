@@ -3,74 +3,71 @@ import './WeatherStrip.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class WeatherCard extends React.Component {
-  constructor(props) {
-    super(props)
-    this.weekday = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" ];
-  }
-
   convertCelsius(celsius) {
     return Math.round(parseFloat(celsius) * 9/5) + 32;
   }
 
   getWeatherDetails(weather) {
-    if (weather === 'sunny')
-      return ["sun", "Sunny"]
-    else if (weather === 'cloudy')
-      return ["cloud", "Cloudy"]
-    else if (weather === 'light-rain')
-      return ["cloud-rain","Light Rain"]
-    else if (weather === 'snow')
-      return ["snowflake", "Snow"]
-    else if (weather === 'thunder-storm')
-      return ["bolt", "Thunder Storm"]
-    else if (weather === 'overcast')
-      return ["cloud-sun", "Overcast"]
-    else
-      return ["exclamation-circle", "Error!"]
+    switch (weather) {
+      case 'sunny':
+        return ["sun", "Sunny"]
+      case 'cloudy': 
+        return ["cloud", "Cloudy"]
+      case 'light-rain':
+        return ["cloud-rain","Light Rain"]
+      case 'snow':
+        return ["snowflake", "Snow"]
+      case 'thunder-storm':
+        return ["bolt", "Thunder Storm"]
+      case 'overcast':
+        return ["cloud-sun", "Overcast"]
+      default:
+        return ["exclamation-circle", "Error!"]
+    }
   }
 
   dayOfWeek(dayNum) {
+    const weekday = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" ];
+
     if (typeof dayNum != 'number' ||
         dayNum > 6 || 
         dayNum < 0)
       return "Error!"
 
-    return this.weekday[dayNum]
+    return weekday[dayNum]
   }
 
-  formatDate(date, dateFormat, firstDate) {
+  formatDate() {
+    const { date, dateFormat, firstDate } = this.props 
+
     if (dateFormat === 'raw') {
       return date
     }
+    else if (date === firstDate) {
+      return 'Today'
+    }
     else {
-      if (date === firstDate) {
-        return 'Today'
-      }
-      else {
-        const dateObj = new Date(date)
-        return this.dayOfWeek(dateObj.getDay())
-      }
+      return this.dayOfWeek(date.getDay())
     }
   }
 
   render() {
+    const { weatherStatus, temp } = this.props 
+    const [ weatherIcon, weatherName ] = this.getWeatherDetails(weatherStatus)
+
     return (
       <div className='card'>
-        <h2>{ this.getWeatherDetails(this.props.weatherStatus)[1] }</h2>
+        <h2>{ weatherName }</h2>
         <FontAwesomeIcon 
-          icon = { this.getWeatherDetails(this.props.weatherStatus)[0] }
+          icon = { weatherIcon }
           size = "4x" 
         />
         <p className = 'temperature'>
-          { 
-            this.convertCelsius(this.props.temp) 
-          }° F
+          { this.convertCelsius(temp) }° F
         </p>
-
         <p className = 'date'>
-          { 
-            this.formatDate(this.props.date, this.props.dateFormat, this.props.firstDate)
-          } </p>
+          { this.formatDate() } 
+        </p>
       </div>
     )
   }

@@ -3,7 +3,7 @@ import { TextField, Button } from '@material-ui/core';
 import './NameForm.css';
 
 const NameForm = ({ addStudent }) => {
-  const [studentName, setStudentName] = React.useState([''])
+  const [studentName, setStudentName] = React.useState('')
 
   function submitName() {
     addStudent(studentName)

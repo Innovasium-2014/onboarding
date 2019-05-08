@@ -1,10 +1,11 @@
 import React from 'react';
-import WeatherCard from './WeatherCard.jsx'
-import WEATHER_DATA from './../../constants/WeatherData.js'
+import WeatherCard from './WeatherCard'
+import WEATHER_DATA from './../../constants/WeatherData'
 import './WeatherStrip.css';
 
 const WeatherStrip = () => {
   const [page, setPage] = React.useState(0)
+  const [elementsPerPage] = React.useState(7)
 
   function sortWeatherData(data, key) {
     return data.sort(
@@ -14,8 +15,8 @@ const WeatherStrip = () => {
     )
   }
 
-  function displayPage(data, numperpage, pageon) {
-    const sortedDate = sortWeatherData(data, 'date').slice(pageon * numperpage, pageon * numperpage + numperpage)
+  function displayPage(data) {
+    const sortedDate = sortWeatherData(data, 'date').slice(page * elementsPerPage, page * elementsPerPage + elementsPerPage)
     const firstDate  = sortWeatherData(data, 'date')[0].date
 
     return sortedDate.map(
@@ -31,8 +32,9 @@ const WeatherStrip = () => {
     )
   }
 
-  function displayButtons(numelements, numperpage, pageon) {
-    const pages = Array.apply(null, {length: Math.ceil(numelements / numperpage)}).map(Number.call, Number)
+  function displayButtons(numberOfElements) {
+    const pages = Array.apply(null, {length: Math.ceil(numberOfElements / elementsPerPage)}).map(Number.call, Number)
+
     return pages.map(
       i => 
         <div
@@ -49,13 +51,12 @@ const WeatherStrip = () => {
     <div className = 'weather-widget'>
       <h1>Weather</h1>
       {
-        displayPage(WEATHER_DATA, 7, page)
+        displayPage(WEATHER_DATA)
       }
       <div className = 'clear' />
       {
-        displayButtons(WEATHER_DATA.length, 7, page)
+        displayButtons(WEATHER_DATA.length)
       }
-      
       <div className = 'clear' />
     </div>
   )

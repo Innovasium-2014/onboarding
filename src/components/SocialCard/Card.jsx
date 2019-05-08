@@ -6,12 +6,14 @@ class Card extends React.Component {
   constructor(props) {
     super(props)
 
+    const { comments, shares, favorites, body } = props
+
     this.state = {
-      comments: this.props.comments,
-      shares: this.props.shares,
-      favorites: this.props.favorites,
-      editing: false,
-      body: this.props.body
+      comments,
+      shares,
+      favorites,
+      body,
+      editing: false
     }
 
     this.clickComment = this.clickComment.bind(this)
@@ -21,21 +23,25 @@ class Card extends React.Component {
     this.changeTweet = this.changeTweet.bind(this)
   }
 
+  buttonState(toggle) {
+    return (toggle ? 1 : -1)
+  }
+
   clickComment(toggle) {
     this.setState({
-      comments: parseInt(this.state.comments) + (toggle ? 1 : -1)
+      comments: this.state.comments + this.buttonState(toggle)
     })
   }
 
   clickShare(toggle) {
     this.setState({
-      shares: parseInt(this.state.shares) + (toggle ? 1 : -1)
+      shares: this.state.shares + this.buttonState(toggle)
     })
   }
 
   clickFavorite(toggle) {
     this.setState({
-      favorites: parseInt(this.state.favorites) + (toggle ? 1 : -1)
+      favorites: this.state.favorites + this.buttonState(toggle)
     })
   }
 
@@ -52,6 +58,9 @@ class Card extends React.Component {
   }
 
   render() {
+    const { accountName, accountHandle, image, date } = this.props
+    const { body, comments, shares, favorites, editing } = this.state
+
     return (
       <div className='tweet'>
 
@@ -59,42 +68,38 @@ class Card extends React.Component {
           <Button icon = 'edit' value = '' callback = { () => this.clickEdit() }/>
         </div>
 
-        <h1>
-          { this.props.accountName }
-        </h1>
-        <h2>
-          { this.props.accountHandle }
-        </h2>
+        <h1> { accountName } </h1>
+        <h2> { accountHandle } </h2>
 
         { 
-          this.props.image &&
-          <img alt = 'Tweet ahah!' src= { this.props.image } />
+          image &&
+          <img alt = 'Tweet ahah!' src= { image } />
         }
-
         
         { 
-          this.state.editing ?
+          editing ?
           <textarea 
             rows="4" 
             columns="8"
             onChange={e => this.changeTweet(e)}
           >
-            {this.state.body}
+            { body }
           </textarea>
           :
-          <p>{this.state.body}</p>
+          <p>{ body }</p>
         }
 
         <p className = 'tweet-date'>
-          { this.props.date }
+          { 
+            date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() 
+          }
         </p>
 
-        <Button icon = 'comment' value = { this.state.comments }  callback = { this.clickComment }/>
-        <Button icon = 'retweet' value = { this.state.shares }    callback = { this.clickShare }/>
-        <Button icon = 'heart'   value = { this.state.favorites } callback = { this.clickFavorite }/>
+        <Button icon = 'comment' value = { comments }  callback = { this.clickComment }/>
+        <Button icon = 'retweet' value = { shares }    callback = { this.clickShare }/>
+        <Button icon = 'heart'   value = { favorites } callback = { this.clickFavorite }/>
 
         <div className='tweet-button-bottom' />
-
       </div>
     )
   }

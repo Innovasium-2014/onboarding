@@ -4,9 +4,9 @@ import CalculatorScreen from './CalculatorScreen';
 import CalculatorButton from './CalculatorButton';
 
 const Calculator = () => {
-  const [screenText, setScreenText] = React.useState([''])
-  const [memoryText, setMemoryText] = React.useState([''])
-  const [operator, setOperator] = React.useState([''])
+  const [screenText, setScreenText] = React.useState('')
+  const [memoryText, setMemoryText] = React.useState('')
+  const [operator, setOperator] = React.useState('')
  
   function buttonInput(value) {
     if (!value)
