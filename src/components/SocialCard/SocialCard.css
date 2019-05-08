@@ -1,0 +1,87 @@
+html {
+  background-color: #DDD;
+}
+
+.tweet {
+  width: 50%;
+  margin: 10px auto;
+  box-shadow: 0px 0px 2px rgba(0,0,0,0.2);
+  padding: 40px;
+  position: relative;
+  background-color: #FFF;
+  border-radius: 2px;
+}
+
+.tweet h1 {
+  font-size: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+.tweet h2 {
+  font-size: 18px;
+  color: #666;
+  font-weight: 100;
+  margin: 4px 0;
+  padding: 0;
+}
+
+.tweet p {
+  font-family: Times, serif;
+  font-size: 24px;
+}
+
+.tweet-top-right {
+  position: absolute;
+  right: 10px;
+  top: 20px;
+}
+
+.tweet-button {
+  border-radius: 5px;
+  float: left;
+  margin: 0 10px 0 0;
+  padding: 10px;
+  box-shadow: 0px 0px 2px rgba(0,0,0,0.2);
+}
+
+.tweet-button:hover {
+  background-color: #EEE;
+  cursor: pointer;
+}
+
+.tweet-button-clicked {
+  background-color: #DDD;
+}
+
+
+.tweet-button-bottom {
+  clear: both;
+}
+
+p.tweet-date {
+  font-size: 18px;
+  font-family: Helvetica, sans-serif;
+  color: #888;
+  font-weight: 10;
+}
+
+.tweet-date {
+  font-style: sans-serif;
+  font-size: 16px;
+}
+
+.tweet img {
+  width: 100%;
+}
+
+svg {
+  margin-right: 10px;
+}
+
+textarea {
+  width: 100%;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 2px;
+}

@@ -15,18 +15,24 @@ const styles = {
   }
 }
 
-const Name = ({ classes, studentName }) => (
-  <Card className={classes.card}>
-    <CardContent>
-      <Typography component="p">
-        {studentName}
-      </Typography>
-    </CardContent>
-    <CardActions>
-      <Button size="small">Delete</Button>
-    </CardActions>
-  </Card>
-);
+const Name = ({ classes, studentName, deleteStudent }) => {
+  return (
+    <Card className={classes.card}>
+      <CardContent>
+        <Typography component="p">
+          {studentName}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button 
+          onClick={deleteStudent}
+          size="small">
+          Delete
+        </Button>
+      </CardActions>
+    </Card>
+  );
+}
 
 Name.propTypes = {
   studentName: PropTypes.string.isRequired,
