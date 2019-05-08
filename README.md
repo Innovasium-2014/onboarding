@@ -2,21 +2,36 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Features to Build
+## Alumni Section
 
-- Type a name into the field and save it in state
-- Add a name to the list on click of the button
-- Delete a user from the list
-- Clear the text field after a name is added
-- Sort the names alphabetically
-- List cannot contain duplicate names
+At the bottom of this document there is a list of student names who have worked
+at Innovasium either during the summer or for their coop/internship program. If
+you are a new student, feel free to add your name and submit a pull request!
+
+## Example Components
+
+This repo hosts a collection of components that serve to expedite the onboarding
+process of learning React. They are contrived examples, as we would like you to learn
+the fundamentals fast and use the core concepts of React outside the scope of a
+large production application.
+
+Inside the `src/components` folder you will find a selection of folders that act
+as placeholders to build out these examples. In each folder there is a markdown
+document that shows a reference to the original idea and the functionality we ask
+you to build.
+
+It is recommended that you implement the given functionality before worrying about
+how nice the component looks. Worry about styling afterwards if you so desire. If
+you're feeling extra ambitious, try tackling the bonus functionality section of
+each component.
 
 ## Resources
 
 ### Git & Github
-  - [Resources to Learn Git](https://try.github.io/)
-  - [Interactive Git Tutorial in your Browser](https://learngitbranching.js.org/)
-  - [Understanding the Github Workflow](https://guides.github.com/introduction/flow/index.html)
+
+- [Resources to Learn Git](https://try.github.io/)
+- [Interactive Git Tutorial in your Browser](https://learngitbranching.js.org/)
+- [Understanding the Github Workflow](https://guides.github.com/introduction/flow/index.html)
 
 ### HTML & Markdown
 
