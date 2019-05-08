@@ -26,16 +26,16 @@ const Calculator = () => {
         setScreenText('');
 
         if (operator === '+') {
-          setScreenText(parseFloat(screenText) + parseFloat(memoryText))
+          setScreenText(parseFloat(memoryText) + parseFloat(screenText))
         }
         else if (operator === '-') {
-          setScreenText(parseFloat(screenText) - parseFloat(memoryText))
+          setScreenText(parseFloat(memoryText) - parseFloat(screenText))
         }
         else if (operator === '/') {
-          setScreenText(parseFloat(screenText) / parseFloat(memoryText))
+          setScreenText(parseFloat(memoryText) / parseFloat(screenText))
         }
         else if (operator === '*') {
-          setScreenText(parseFloat(screenText) * parseFloat(memoryText))
+          setScreenText(parseFloat(memoryText) * parseFloat(screenText))
         }
       }
       setMemoryText('')
