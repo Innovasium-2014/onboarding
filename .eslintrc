@@ -11,21 +11,19 @@
       "jsx": true
     }
   },
-  "plugins": [
-    "eslint-plugin-react"
-  ],
+  "plugins": ["eslint-plugin-react"],
   "rules": {
     "strict": 0,
     "indent": [2, 2],
     "comma-dangle": [2, "never"],
     "react/wrap-multilines": 0,
     "no-var": 0,
-    "new-cap" : 0,
+    "new-cap": 0,
     "spaced-comment": 0,
     "react/jsx-boolean-value": 0,
     "jsx-quotes": 0,
     "react/sort-comp": 0,
-    "no-unused-vars": [2, {"args": "none"}],
+    "no-unused-vars": [2, { "args": "none" }],
     "no-alert": 0,
     "arrow-body-style": 0,
     "import/prefer-default-export": 0,
