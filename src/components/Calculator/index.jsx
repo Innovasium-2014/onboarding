@@ -1,1 +1,6 @@
-export { default } from './Calculator';
+export {
+  Calculator,
+  CalculatorButton,
+  Display,
+  ButtonContainer,
+} from './Calculator'

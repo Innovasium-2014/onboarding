@@ -1,0 +1,29 @@
+.calculatorstyle {
+  margin: auto;
+  width: 50%;
+}
+.buttoncontainerstyle {
+  display: inline-grid;
+  grid-gap: 5px;
+  padding: 5px;
+  justify-content: space-evenly;
+  grid-template-columns: auto auto auto auto;
+}
+
+.buttonstyle {
+  width: 100px;
+  height: 40px;
+  border: 1px solid grey;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.displaystyle {
+  width: 430px;
+  height: 60px;
+  border: 1px solid blue;
+  box-sizing: border-box;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  border-radius: 5px;
+}
