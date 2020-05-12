@@ -7,7 +7,7 @@
   grid-gap: 5px;
   padding: 5px;
   justify-content: space-evenly;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: auto auto auto auto auto;
 }
 
 .buttonstyle {
@@ -19,11 +19,34 @@
 }
 
 .displaystyle {
-  width: 430px;
+  width: 530px;
   height: 60px;
-  border: 1px solid blue;
+  border: 2px solid blue;
   box-sizing: border-box;
-  grid-column-start: 1;
-  grid-column-end: 4;
+
   border-radius: 5px;
+}
+
+.displayerrorstyle {
+  width: 530px;
+  height: 60px;
+  border: 2px solid red;
+  box-sizing: border-box;
+
+  border-radius: 5px;
+}
+
+.displaytextstyle {
+  text-align: right;
+  padding: 2px;
+  overflow-x: hidden;
+  font-size: 16px;
+}
+
+.displayprevresultstyle {
+  text-align: right;
+  padding: 5px;
+  overflow-x: hidden;
+  font-size: 12px;
+  color: #4d4d4d;
 }
