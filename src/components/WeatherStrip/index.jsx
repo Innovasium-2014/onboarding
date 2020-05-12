@@ -1,1 +1,1 @@
-export { default } from './WeatherStrip';
+export { WeatherCard, WeatherStrip, WEATHER_TYPES } from './WeatherStrip'

@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-import SocialCard from '../components/SocialCard';
+import SocialCard from '../components/SocialCard'
 
-const SocialCardPage = () => <SocialCard />;
+const SocialCardPage = () => <SocialCard />
 
-export default SocialCardPage;
+export default SocialCardPage

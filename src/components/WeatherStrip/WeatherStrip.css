@@ -1,0 +1,21 @@
+.weather-strip-style {
+  display: flex;
+}
+
+.weather-card-style {
+  margin: 8px;
+}
+
+.weather-content-style {
+  width: 175px;
+  height: 175px;
+  border-radius: 5px;
+}
+.weather-icon-style {
+  font-size: 100px;
+  text-align: center;
+}
+
+.weather-body-style {
+  text-align: center;
+}
