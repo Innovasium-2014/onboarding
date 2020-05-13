@@ -41,7 +41,7 @@ export const WeatherStrip = ({ data, isRelative }) => (
   </div>
 )
 WeatherStrip.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.array,
   isRelative: PropTypes.bool,
 }
 

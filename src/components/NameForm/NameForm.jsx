@@ -6,7 +6,6 @@ import './NameForm.css'
 const NameForm = ({ onClick, errorMessage }) => {
   const [textboxValue, setTextboxValue] = React.useState('')
   const textChange = (event) => {
-    console.log(event.target.value)
     setTextboxValue(event.target.value)
   }
 

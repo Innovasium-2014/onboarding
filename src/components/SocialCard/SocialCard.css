@@ -1,0 +1,44 @@
+.social-card-style {
+  width: 600px;
+  padding: 25px;
+}
+.account-name-style {
+  font-weight: bold;
+}
+.title-container-style {
+  padding: 10px;
+}
+.post-details-style {
+  color: #353535;
+}
+.social-content-style {
+  padding: 25px;
+}
+.social-button-container-style {
+  display: flex;
+  justify-content: space-around;
+}
+.social-button-unpressed {
+  color: black;
+  font-size: 32px;
+}
+.social-button-pressed {
+  color: red;
+  font-size: 32px;
+}
+.image-style {
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: scroll;
+  width: 550px;
+  height: 300px;
+  border-radius: 14px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(0, 0, 0, 0.562);
+  background-size: cover;
+}
+.card-holder-style {
+  display: flex;
+  flex-direction: column;
+}
